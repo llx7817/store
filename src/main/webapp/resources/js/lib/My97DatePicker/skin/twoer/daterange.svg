@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="16px" viewBox="0 0 14 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>日历1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="组件-日历" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="控件－日历" transform="translate(-970.000000, -441.000000)" fill="#424242">
+            <path d="M982,443 L982.993155,443 C983.54922,443 984,443.449949 984,444.006845 L984,455.993155 C984,456.54922 983.550051,457 982.993155,457 L971.006845,457 C970.45078,457 970,456.550051 970,455.993155 L970,444.006845 C970,443.45078 970.449949,443 971.006845,443 L972,443 L972,441 L974,441 L974,443 L980,443 L980,441 L982,441 L982,443 Z M971,446 L971,456 L983,456 L983,446 L971,446 Z M973,448 L981,448 L981,450 L973,450 L973,448 Z M973,452 L978,452 L978,454 L973,454 L973,452 Z" id="日历1"></path>
+        </g>
+    </g>
+</svg>

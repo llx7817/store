@@ -1,0 +1,6 @@
+.datePic{
+	background-image:url(time.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	border:1px solid #ccc;
+}
