@@ -17,5 +17,7 @@ public interface CommonService<T, PK> {
 
 	public void delete(T entity);
 
+	public void deleteById(Class<T> clazz, PK id);
+
 	public void save(T entity);
 }

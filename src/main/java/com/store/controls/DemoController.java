@@ -22,21 +22,16 @@ public class DemoController {
 		// productLabel.setId("122");
 		// productLabel = commonService.get(Product.class, "10");
 		productLabel.setName("qqqqq");
-		commonService.save(productLabel);
+		// commonService.save(productLabel);
 		// commonService.save(productLabel);
 		model.addAttribute("department", productLabel);
 		return "text";
 	}
 
-	@RequestMapping("/login")
+	@RequestMapping("/manager/login")
 	public String login(Model model) {
-		Product productLabel = new Product();
-		// productLabel.setId("122");
-		// productLabel = commonService.get(Product.class, "10");
-		productLabel.setName("qqqqq");
-		commonService.save(productLabel);
-		// commonService.save(productLabel);
-		model.addAttribute("department", productLabel);
-		return "text";
+		// model.addAttribute("department", productLabel);
+		return "manager/test";
 	}
+
 }

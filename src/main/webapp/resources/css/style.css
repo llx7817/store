@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+
+.biaotou {
+	text-align: center;
+	letter-spacing: normal;
+	vertical-align: middle;
+	word-spacing: normal;
+	white-space: normal;
+}
+.denglu {
+	text-align: right;
+	padding-right: 3px;
+	font-size: 14px;
+	font-style: italic;
+}
+
+.basefont1 {
+	font-size: 16px;
+	font-weight: normal;
+}
+
+
+.juzhong {
+	text-align: center;
+}
+.leftblank {
+	padding-left: 15px;
+	text-align: center;
+}
+
+
+
+.basefont1 .denglu {
+	float: right;
+	font-size: 16px;
+	font-style: normal;
+}
+.blue_right {
+	color: #39F;
+	float: right;
+	text-align: right;
+}
+.sidebar_xuanxiang {
+	height: 40px;
+	line-height: 40px;
+	text-indent: 10px;
+	color: #333;
+}
+body table {
+	line-height: 40px;
+	text-align: left;
+}
+#name{
+	background: #f2f2f2;
+}
+
+
+
+
+#TabbedPanels1 .TabbedPanelsContentGroup .TabbedPanelsContent.TabbedPanelsContentVisible p {
+
+
+}
+
+.juzhong_for_new {
+	padding-left: 0%;
+	text-indent: 0%;
+	text-align: center;
+}
+
+
+/* .bg { */
+/* 	color: #EEEEEE; */
+/* } */
+#confirm1,#confirmEncode
+{
+	position:absolute;
+	left:40%;
+	top:30%;
+	background:white;
+	display:none;
+	overflow:hidden;
+	
+}
+#confirmCase
+{
+	position:absolute;
+	left:40%;
+	top:30%;
+	background:white;
+	display:none;
+	overflow:hidden;
+	
+}

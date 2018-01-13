@@ -59,7 +59,8 @@ public class BaseDaoImpl<T, PK extends Serializable> implements BaseDao<T, PK> {
 	public List<T> getAll(Class<T> clazz) {
 		// TODO Auto-generated method stub
 		// session.getDelegate();
-		return null;
+		List<T> getAll = getSession().loadAll(clazz);
+		return getAll;
 	}
 
 	public void update(T entity) {

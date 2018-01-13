@@ -1,33 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <%@ include file="../../common.jsp"%> --%>
+	<div class="container" style="margin-left: 0px;width: 20%;">
+		<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" 
+					   href="#collapseOne">
+						产品管理
+					</a>
+				</h4>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse in">
+				<div class="panel-body" style="padding: 0px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/product/edit.do" >添加产品</a></li>
+<!-- 						<li class="list-group-item" ><button type="button" myid="" class="btn btn-link addbtn">添加产品</button> </li> -->
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/product/list.do" >管理产品</a></li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/productParameter/list.do" >管理产品参数</a></li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/productCategory/list.do" >管理产品分类</a></li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/productLabel/list.do" >管理产品标签</a></li>
+						</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" 
+					   href="#collapseTwo">
+						文章管理
+					</a>
+				</h4>
+			</div>
+			<div id="collapseTwo" class="panel-collapse collapse">
+				<div class="panel-body" style="padding: 0px;">
+					<ul class="list-group" style="margin-bottom: 0px;">
+						<li class="list-group-item" >免费域名注册</li>
+						<li class="list-group-item">免费 Window 空间托管</li>
+						<li class="list-group-item">图像的数量</li>
+						<li class="list-group-item">24*7 支持</li>
+						<li class="list-group-item">每年更新成本</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 
-<div  style="width:180px;">
-<div id="CollapsiblePanel1" class="CollapsiblePanel">
-  <div class="CollapsiblePanelTab" tabindex="0"><span class="sidebar_xuanxiang basefont1">产品类型维护</span></div>
-  <div class="CollapsiblePanelContent">
-    <p class="CollapsiblePanelContent sidebar_xuanxiang"><a href="${contextPath}/art/manager/productMaintenance/list" id="choose1" >产品类型维护</a></p>
-  </div>
-</div>
-<div id="CollapsiblePanel2" class="CollapsiblePanel">
-  <div class="CollapsiblePanelTab" tabindex="0"><span class="sidebar_xuanxiang"><span class="basefont1">语义库管理</span></span></div>
-  <div class="CollapsiblePanelContent">
-    <p class="CollapsiblePanelContent sidebar_xuanxiang"><a href="${contextPath}/art/manager/basicSemantic/list" id="choose2">基础意象语义库</a></p>
-    <p class="CollapsiblePanelContent sidebar_xuanxiang"><a href="${contextPath}/art/manager/dimense/list"  id="choose3">降维词汇库</a></p>
-    <p class="CollapsiblePanelContent sidebar_xuanxiang"><a href="${contextPath}/art/manager/question/list"  id="choose4">问卷调查与检验</a></p>
-  </div>
-</div>
-<div id="CollapsiblePanel3" class="CollapsiblePanel">
-  <div class="CollapsiblePanelTab" tabindex="0"><span class="sidebar_xuanxiang"><span class="basefont1">外观库管理</span></span></div>
-  <div class="CollapsiblePanelContent">
-    <p class="CollapsiblePanelContent sidebar_xuanxiang"><a href="${contextPath}/art/manager/bottom/list"  id="choose5">底层案例库</a></p>
-    <p class="CollapsiblePanelContent sidebar_xuanxiang"><a href="${contextPath}/art/manager/code/list"  id="choose6">编码案例库</a></p>
-    <p class="CollapsiblePanelContent sidebar_xuanxiang"><a href="${contextPath}/art/manager/newcase/list"  id="choose7">新造型库</a></p>
-  </div>
-</div>
-</div>
-<p class="sidebar_xuanxiang">&nbsp; </p>
-<script type="text/javascript">
-var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel1", {contentIsOpen:false});
-var CollapsiblePanel2 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel2", {contentIsOpen:false});
-var CollapsiblePanel3 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel3", {contentIsOpen:false});
-</script>
 

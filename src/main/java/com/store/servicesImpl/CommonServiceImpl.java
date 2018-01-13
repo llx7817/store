@@ -42,7 +42,8 @@ public class CommonServiceImpl<T, PK extends Serializable> implements CommonServ
 	public List<T> getAll(Class<T> clazz) {
 		// String searchSql = "select * from " + clazz.getSimpleName();
 		// List<Map<String, Object>> objectList = jdbcTemplate.queryForList(searchSql);
-		return null;
+		List<T> objectList = baseDao.getAll(clazz);
+		return objectList;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = { Exception.class })
@@ -58,4 +59,7 @@ public class CommonServiceImpl<T, PK extends Serializable> implements CommonServ
 		baseDao.delete(entity);
 	}
 
+	public void deleteById(Class<T> clazz, PK id) {
+		baseDao.deleteByKey(clazz, id);
+	}
 }
