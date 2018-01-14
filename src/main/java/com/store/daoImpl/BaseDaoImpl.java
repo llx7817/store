@@ -96,4 +96,9 @@ public class BaseDaoImpl<T, PK extends Serializable> implements BaseDao<T, PK> {
 		// TODO Auto-generated method stub
 		delete(this.get(clazz, id));
 	}
+
+	public List<?> find(String queryString, Object values) {
+		// TODO Auto-generated method stub
+		return getSession().find(queryString, values);
+	}
 }

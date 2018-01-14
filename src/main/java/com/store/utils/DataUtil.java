@@ -1,6 +1,9 @@
 package com.store.utils;
 
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import com.store.entity.PageData;
@@ -12,6 +15,28 @@ import com.store.entity.PageData;
  *
  */
 public final class DataUtil {
+	/*
+	 * 用硬编码解决在URL中传递中文
+	 */
+	public static String encodURI(String str) {
+		try {
+			str = new String(str.getBytes("iso8859-1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return str;
+	}
+
+	/*
+	 * 转换时间
+	 */
+	public static String dateToString(Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 小写的mm表示的是分钟
+		String str = sdf.format(date);// 转换格式
+		// System.out.println("str:" + str);// str:2017-08-16 10:22:15
+		return str;
+	}
 
 	public static <T> PageData<T> toPageData(List<T> list, int begin, int end) {
 		List<T> subList = subList(list, begin, end);

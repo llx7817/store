@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.store.entity.PageData;
 import com.store.entity.Product;
+import com.store.entity.ProductCategory;
 import com.store.entity.ProductLabel;
 import com.store.entity.ProductParameter;
 import com.store.services.CommonService;
 import com.store.utils.DataUtil;
-
-import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping("/manager/product/")
@@ -32,6 +33,8 @@ public class ProductController {
 	private CommonService<ProductLabel, String> commonServiceProductLabel;
 	@Autowired
 	private CommonService<ProductParameter, String> commonServiceProductParameter;
+	@Autowired
+	private CommonService<ProductCategory, String> commonServiceProductCategory;
 
 	@RequestMapping("list")
 	public String list(Model model, Product product) {
@@ -53,8 +56,12 @@ public class ProductController {
 		model.addAttribute("item", item);
 		List<ProductLabel> productLabelList = commonServiceProductLabel.getAll(ProductLabel.class);
 		List<ProductParameter> productParameterList = commonServiceProductParameter.getAll(ProductParameter.class);
+		List<ProductCategory> productCategoryList = commonServiceProductCategory.getAll(ProductCategory.class);
+		// productLabelList.add(new ProductLabel());
 		model.addAttribute("productLabelList", productLabelList);
 		model.addAttribute("productParameterList", productParameterList);
+		model.addAttribute("productCategoryList", productCategoryList);
+		model.addAttribute("filename", item.getProductImg());
 		return "manager/product/edit";
 	}
 
@@ -65,6 +72,7 @@ public class ProductController {
 			@RequestParam(value = "pageSize", required = false, defaultValue = "-1") int pageSize,
 			@RequestParam(value = "conditionDefinition", required = false, defaultValue = "") String conditionDefinition)
 			throws UnsupportedEncodingException {
+		conditionDefinition = DataUtil.encodURI(conditionDefinition);
 		// if (!StringUtils.isEmpty(conditionDefinition)) {
 		// conditionDefinition = URLDecoder.decode(conditionDefinition, "utf-8");
 		// }
@@ -88,7 +96,8 @@ public class ProductController {
 			map.put("id", product.getId());
 			map.put("name", product.getName());
 			map.put("productLabel", product.getProductLabel());
-			map.put("productParameter", product.getProductParameter());
+			map.put("productCategory", product.getProductCategory());
+			map.put("updateTime", DataUtil.dateToString(product.getUpdateTime()));
 			// map.put("tranUnit", product.getTranUnit() == null ? "" :
 			// product.getTranUnit().getName());
 			rows.add(map);
@@ -103,16 +112,19 @@ public class ProductController {
 	@ResponseBody
 	public String save(Product product) {
 		String flag = "保存成功";
-		if (product.getName() != null && product.getName() != "")
-			commonServiceProduct.save(product);
-		else
+		if (product.getName() != null && product.getName() != "") {
+			if (!product.getId().equals("") && !product.getId().equals(null)) {
+				commonServiceProduct.update(product);
+			} else
+				commonServiceProduct.save(product);
+		} else
 			flag = "产品名称为空，保存失败";
 		return flag;
 	}
 
 	@RequestMapping("load/delete")
 	@ResponseBody
-	public JSONObject delete(String id) {
+	public JSONObject delete(String id) throws JSONException {
 		boolean flag = false;
 		if (!id.equals("")) {
 			commonServiceProduct.deleteById(Product.class, id);

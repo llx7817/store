@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +21,6 @@ import com.store.entity.ProductLabel;
 import com.store.services.CommonService;
 import com.store.utils.DataUtil;
 
-import net.sf.json.JSONObject;
-
 @Controller
 @RequestMapping("/manager/productLabel/")
 public class ProductLabelController {
@@ -33,21 +33,14 @@ public class ProductLabelController {
 		return "manager/productLabel/list";
 	}
 
-	@RequestMapping("add")
-	public String add(Model model, ProductLabel productLabel) {
-
-		return "manager/productLabelLabel/edit";
-	}
-
 	@RequestMapping("edit")
-	public String edit(ProductLabel item, Model model, @RequestParam(value = "id", defaultValue = "") String id) {
+	@ResponseBody
+	public ProductLabel edit(@RequestParam(value = "id", defaultValue = "") String id) {
+		ProductLabel item = new ProductLabel();
 		if (!id.equals("")) {
 			item = commonServiceProductLabel.get(ProductLabel.class, id);
 		}
-		model.addAttribute("item", item);
-		List<ProductLabel> productLabelList = commonServiceProductLabel.getAll(ProductLabel.class);
-		model.addAttribute("itemList", productLabelList);
-		return "manager/productLabel/edit";
+		return item;
 	}
 
 	@RequestMapping(value = "load/search", method = RequestMethod.GET)
@@ -57,6 +50,7 @@ public class ProductLabelController {
 			@RequestParam(value = "pageSize", required = false, defaultValue = "-1") int pageSize,
 			@RequestParam(value = "conditionDefinition", required = false, defaultValue = "") String conditionDefinition)
 			throws UnsupportedEncodingException {
+		conditionDefinition = DataUtil.encodURI(conditionDefinition);
 		// if (!StringUtils.isEmpty(conditionDefinition)) {
 		// conditionDefinition = URLDecoder.decode(conditionDefinition, "utf-8");
 		// }
@@ -66,7 +60,7 @@ public class ProductLabelController {
 		// sb.append(" order by orderNo ");
 		// Query q = dao.getSession().createQuery(sb.toString());
 		// if (condition != null) {
-		// condition.setParameters(q);
+		// condition.setLabels(q);
 		// }
 		int end = -1;
 		if (begin >= 0) {
@@ -91,18 +85,23 @@ public class ProductLabelController {
 
 	@RequestMapping("load/save")
 	@ResponseBody
-	public String save(ProductLabel productLabel) {
+	public String save(@RequestParam(value = "id", defaultValue = "") String id,
+			@RequestParam(value = "name", defaultValue = "") String name) {
 		String flag = "保存成功";
-		if (productLabel.getName() != null && productLabel.getName() != "")
+		name = DataUtil.encodURI(name);
+		ProductLabel productLabel = new ProductLabel();
+		productLabel.setName(name);
+		if (!id.equals("")) {
+			productLabel.setId(id);
+			commonServiceProductLabel.update(productLabel);
+		} else
 			commonServiceProductLabel.save(productLabel);
-		else
-			flag = "产品名称为空，保存失败";
 		return flag;
 	}
 
 	@RequestMapping("load/delete")
 	@ResponseBody
-	public JSONObject delete(String id) {
+	public JSONObject delete(String id) throws JSONException {
 		boolean flag = false;
 		if (!id.equals("")) {
 			commonServiceProductLabel.deleteById(ProductLabel.class, id);

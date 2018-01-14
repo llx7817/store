@@ -1,5 +1,5 @@
 /**
- * @版权所有 聚光科技（杭州）股份有限公司
+TimestampPersistent.java * @版权所有 聚光科技（杭州）股份有限公司
  * 
  */
 package com.store.entity;

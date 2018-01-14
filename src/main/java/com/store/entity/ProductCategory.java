@@ -36,6 +36,10 @@ public class ProductCategory {
 	private String name;
 
 	/**
+	 * 上一级的id
+	 */
+	private String parentProductCategoryId;
+	/**
 	 * 创建时间
 	 */
 	// private String beginTime;
@@ -51,6 +55,14 @@ public class ProductCategory {
 
 	public void setId(String userid) {
 		this.id = userid;
+	}
+
+	public String getParentProductCategoryId() {
+		return parentProductCategoryId;
+	}
+
+	public void setParentProductCategoryId(String parentProductCategoryId) {
+		this.parentProductCategoryId = parentProductCategoryId;
 	}
 
 	public String getName() {
@@ -78,8 +90,9 @@ public class ProductCategory {
 	}
 
 	// @ManyToOne
-	// @OneToMany
+	// // @OneToMany
 	// @JoinColumn(name = "parentProductCategoryId")
+	// @NotFound(action = NotFoundAction.IGNORE)
 	// private ProductCategory parentProductCategory;
 	//
 	// public ProductCategory getParentProductCategory() {

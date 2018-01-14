@@ -97,10 +97,10 @@ public class Product implements Serializable {
 	/**
 	 * 产品类别
 	 */
-	// @OneToMany
-	// @JoinColumn(name = "productCategoryId")
-	// @NotFound(action = NotFoundAction.IGNORE)
-	// private ProductCategory productCategory;
+	@ManyToOne
+	@JoinColumn(name = "productCategoryId")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private ProductCategory productCategory;
 	// private String category;
 
 	/**
@@ -113,13 +113,13 @@ public class Product implements Serializable {
 	@NotFound(action = NotFoundAction.IGNORE)
 	private ProductLabel productLabel;
 
-	// public ProductCategory getProductCategory() {
-	// return productCategory;
-	// }
-	//
-	// public void setProductCategory(ProductCategory productCategory) {
-	// this.productCategory = productCategory;
-	// }
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(ProductCategory productCategory) {
+		this.productCategory = productCategory;
+	}
 
 	public ProductLabel getProductLabel() {
 		return productLabel;

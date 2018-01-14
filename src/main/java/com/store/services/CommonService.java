@@ -20,4 +20,11 @@ public interface CommonService<T, PK> {
 	public void deleteById(Class<T> clazz, PK id);
 
 	public void save(T entity);
+
+	public void update(T entity);
+
+	// public Map<String, Object> getByAttribute2(Class<T> clazz, String attribute,
+	// String value);
+
+	public List<T> getByAttribute(Class<T> clazz, String attribute, String value);
 }

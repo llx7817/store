@@ -27,7 +27,6 @@ $(document).ready(function(){
 			sWidth:'100px',
 			mData: 'productLabel',
 			mRender: function (value,f,row,rowcols) {
-				 debugger
             	 var myValue=" ";
             	 if(typeof value !='undefined' && value != null&& value != ""){
             		 myValue=value.name;
@@ -37,9 +36,8 @@ $(document).ready(function(){
 		},{
 			sTitle: '分类',
 			sWidth:'100px',
-			mData: 'productParameter',
+			mData: 'productCategory',
 			mRender: function (value,f,row,rowcols) {
-				 debugger
            	 var myValue=" ";
            	 if(typeof value !='undefined' && value != null&& value != ""){
            		 myValue=value.name;
@@ -47,17 +45,16 @@ $(document).ready(function(){
                 return myValue;
            }
 		},{
-			sTitle: '参数',
+			sTitle: '添加时间',
 			sWidth:'100px',
-			mData: null,
-			mRender: function (value,f,row,rowcols) {
-				 debugger
-           	 var myValue=" ";
-           	 if(typeof value !='undefined' && value != null&& value != ""){
-           		 myValue=value.name;
-           	 }
-                return myValue;
-           }
+			mData: "updateTime"
+//			,mRender: function (value,f,row,rowcols) {
+//				 debugger
+//				 if(typeof value =='undefined' || value== null|| value == ""){
+//	           		 value="1111";
+//	           	 }
+//                return value;
+//           }
 		}, {
             title: '操作',
             mData: 'id',

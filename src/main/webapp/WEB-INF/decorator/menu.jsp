@@ -7,19 +7,19 @@
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion" 
 					   href="#collapseOne">
-						产品管理
+						商品管理
 					</a>
 				</h4>
 			</div>
 			<div id="collapseOne" class="panel-collapse collapse in">
 				<div class="panel-body" style="padding: 0px;">
 					<ul class="list-group" style="margin-bottom: 0px;">
-						<li class="list-group-item" ><a href="${contextPath}/store/manager/product/edit.do" >添加产品</a></li>
-<!-- 						<li class="list-group-item" ><button type="button" myid="" class="btn btn-link addbtn">添加产品</button> </li> -->
-						<li class="list-group-item" ><a href="${contextPath}/store/manager/product/list.do" >管理产品</a></li>
-						<li class="list-group-item" ><a href="${contextPath}/store/manager/productParameter/list.do" >管理产品参数</a></li>
-						<li class="list-group-item" ><a href="${contextPath}/store/manager/productCategory/list.do" >管理产品分类</a></li>
-						<li class="list-group-item" ><a href="${contextPath}/store/manager/productLabel/list.do" >管理产品标签</a></li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/product/edit.do" >添加商品</a></li>
+<!-- 						<li class="list-group-item" ><button type="button" myid="" class="btn btn-link addbtn">添加商品</button> </li> -->
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/product/list.do" >管理商品</a></li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/productParameter/list.do" >管理商品参数</a></li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/productCategory/list.do" >管理商品分类</a></li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/productLabel/list.do" >管理商品标签</a></li>
 						</ul>
 				</div>
 			</div>

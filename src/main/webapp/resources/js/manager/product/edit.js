@@ -17,22 +17,18 @@ $(".savebtn").click(function(){
 			var flag=data;
 			alert("保存成功！");
 		});
+		location.reload([true]);
 //		 window.location.href= listUrl;
 });
 
 
 
 var oldfilename=$('#thelist').attr("value");
-//$('#thelist').html('<a class=" " href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+'">'+oldfilename+'</a>');
-//srcUrl=contextPath+"/image/"+oldfilename;
-
-//	$("#thelist").html('<a class=" " href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+'"><img src="'+contextPath+"/image/"+oldfilename+'" alt="'+oldfilename+
-//			'" style=" margin-top: 12px; margin-bottom: 15px;width: 125px;"/></a>');
 if(typeof oldfilename !='undefined' && oldfilename != null&& oldfilename != ""){
 	debugger
 	$("#thelist").html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
 			'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:100px"><img src="'+contextPath+
-			"resources/img/"+oldfilename+'" alt="'+oldfilename+
+			"/resources/img/"+oldfilename+'" alt="'+oldfilename+
 	'"/>	<div class="info">"'+oldfilename+'"</div></div></a>');
 }
 

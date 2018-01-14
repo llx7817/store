@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +20,6 @@ import com.store.entity.PageData;
 import com.store.entity.ProductParameter;
 import com.store.services.CommonService;
 import com.store.utils.DataUtil;
-
-import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping("/manager/productParameter/")
@@ -34,14 +34,13 @@ public class ProductParameterController {
 	}
 
 	@RequestMapping("edit")
-	public String edit(ProductParameter item, Model model, @RequestParam(value = "id", defaultValue = "") String id) {
+	@ResponseBody
+	public ProductParameter edit(@RequestParam(value = "id", defaultValue = "") String id) {
+		ProductParameter item = new ProductParameter();
 		if (!id.equals("")) {
 			item = commonServiceProductParameter.get(ProductParameter.class, id);
 		}
-		model.addAttribute("item", item);
-		List<ProductParameter> productParameterList = commonServiceProductParameter.getAll(ProductParameter.class);
-		model.addAttribute("itemList", productParameterList);
-		return "manager/productParameter/edit";
+		return item;
 	}
 
 	@RequestMapping(value = "load/search", method = RequestMethod.GET)
@@ -85,18 +84,23 @@ public class ProductParameterController {
 
 	@RequestMapping("load/save")
 	@ResponseBody
-	public String save(ProductParameter productParameter) {
+	public String save(@RequestParam(value = "id", defaultValue = "") String id,
+			@RequestParam(value = "", defaultValue = "") String name) {
 		String flag = "保存成功";
-		if (productParameter.getName() != null && productParameter.getName() != "")
+		name = DataUtil.encodURI(name);
+		ProductParameter productParameter = new ProductParameter();
+		productParameter.setName(name);
+		if (!id.equals("")) {
+			productParameter.setId(id);
+			commonServiceProductParameter.update(productParameter);
+		} else
 			commonServiceProductParameter.save(productParameter);
-		else
-			flag = "产品名称为空，保存失败";
 		return flag;
 	}
 
 	@RequestMapping("load/delete")
 	@ResponseBody
-	public JSONObject delete(String id) {
+	public JSONObject delete(String id) throws JSONException {
 		boolean flag = false;
 		if (!id.equals("")) {
 			commonServiceProductParameter.deleteById(ProductParameter.class, id);

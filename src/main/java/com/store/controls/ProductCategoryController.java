@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +21,6 @@ import com.store.entity.ProductCategory;
 import com.store.services.CommonService;
 import com.store.utils.DataUtil;
 
-import net.sf.json.JSONObject;
-
 @Controller
 @RequestMapping("/manager/productCategory/")
 public class ProductCategoryController {
@@ -29,25 +29,30 @@ public class ProductCategoryController {
 
 	@RequestMapping("list")
 	public String list(Model model, ProductCategory product) {
-
 		return "manager/productCategory/list";
 	}
 
-	@RequestMapping("add")
-	public String add(Model model, ProductCategory productCategory) {
-
-		return "manager/productCategoryLabel/edit";
-	}
-
-	@RequestMapping("edit")
-	public String edit(ProductCategory item, Model model, @RequestParam(value = "id", defaultValue = "") String id) {
+	@RequestMapping("editRelation")
+	public String editRelation(Model model, @RequestParam(value = "id", defaultValue = "") String id) {
+		ProductCategory item = new ProductCategory();
 		if (!id.equals("")) {
 			item = commonServiceProductCategory.get(ProductCategory.class, id);
 		}
+		if (item.getParentProductCategoryId().equals("")) {
+			item.setParentProductCategoryId("000000");
+		}
 		model.addAttribute("item", item);
-		List<ProductCategory> productCategoryList = commonServiceProductCategory.getAll(ProductCategory.class);
-		model.addAttribute("itemList", productCategoryList);
 		return "manager/productCategory/edit";
+	}
+
+	@RequestMapping("edit")
+	@ResponseBody
+	public ProductCategory edit(@RequestParam(value = "id", defaultValue = "") String id) {
+		ProductCategory item = new ProductCategory();
+		if (!id.equals("")) {
+			item = commonServiceProductCategory.get(ProductCategory.class, id);
+		}
+		return item;
 	}
 
 	@RequestMapping(value = "load/search", method = RequestMethod.GET)
@@ -66,7 +71,7 @@ public class ProductCategoryController {
 		// sb.append(" order by orderNo ");
 		// Query q = dao.getSession().createQuery(sb.toString());
 		// if (condition != null) {
-		// condition.setParameters(q);
+		// condition.setCategorys(q);
 		// }
 		int end = -1;
 		if (begin >= 0) {
@@ -79,8 +84,9 @@ public class ProductCategoryController {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("id", productCategory.getId());
 			map.put("name", productCategory.getName());
-			// map.put("tranUnit", product.getTranUnit() == null ? "" :
-			// product.getTranUnit().getName());
+			ProductCategory productCategoryTemp = commonServiceProductCategory.get(ProductCategory.class,
+					productCategory.getParentProductCategoryId());
+			map.put("parentProductCategory", productCategoryTemp);
 			rows.add(map);
 		}
 		PageData<Map<String, Object>> pageData = new PageData<Map<String, Object>>();
@@ -91,12 +97,19 @@ public class ProductCategoryController {
 
 	@RequestMapping("load/save")
 	@ResponseBody
-	public String save(ProductCategory productCategory) {
+	public String save(@RequestParam(value = "id", defaultValue = "") String id,
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "parentProductCategoryId", defaultValue = "") String parentProductCategoryId) {
 		String flag = "保存成功";
-		if (productCategory.getName() != null && productCategory.getName() != "")
+		// name = DataUtil.encodURI(name);
+		ProductCategory productCategory = new ProductCategory();
+		productCategory.setName(name);
+		productCategory.setParentProductCategoryId(parentProductCategoryId);
+		if (!id.equals("")) {
+			productCategory.setId(id);
+			commonServiceProductCategory.update(productCategory);
+		} else
 			commonServiceProductCategory.save(productCategory);
-		else
-			flag = "产品名称为空，保存失败";
 		return flag;
 	}
 
@@ -109,7 +122,12 @@ public class ProductCategoryController {
 			flag = true;
 		}
 		JSONObject obj = new JSONObject();
-		obj.put("flag", flag);
+		try {
+			obj.put("flag", flag);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return obj;
 	}
 }

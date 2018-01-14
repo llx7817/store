@@ -6,6 +6,7 @@ public interface BaseDao<T, PK> {
 	// 根据主键获取实体。如果没有相应的实体，返回 null。
 	public T get(Class<T> clazz, PK id);
 
+	public List<?> find(String queryString, Object values);
 	// 根据主键获取实体并加锁。如果没有相应的实体，返回 null。
 	// public T getWithLock(Class<T> clazz, PK id, LockMode lock);
 

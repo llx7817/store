@@ -8,58 +8,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="main-body-position">
+	<div class="main-body-position">
 		<div class="container-position">
-				<div class="mydiv gray-background" >添加商品分类</div> 
+				<div class="mydiv gray-background" >商品类别编辑</div> 
 				<br>
-<form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/productCategory/load/save.do"
-					commandName="item" methodParam="post">
-					<form:hidden path="id" />
-						<br>
-						<div class="input-title-position">
-								  <label for="productCategory_name"><span class="thick label-name">产品名称</span></label>
-								  <div class="my-no-br-right" >
-								  <form:input path="name"   class="form-control "  size="10"/>
-								  </div>
-						</div> 
-<!-- 						图片上传 -->
-<!-- 						<div class="input-title-position"> -->
-<!-- 								  <label for="productCategory_ico"><span class="thick label-name">产品图</span></label> -->
-<!-- 								  <div class="my-no-br-right" > -->
-<!-- 								  用来存放item   -->
-<!-- 								     <button id="filePicker" class="btn filePicker " style=" padding: 0;">选择图片</button>  -->
-<%-- 								     <div id="thelist" class="uploader-list " value="${filename }"></div>   --%>
-<%-- 								     <div id="filename" value="${filename }"></div> --%>
-<!-- 								  </div> -->
-<!-- 						</div>  -->
-						<div class="input-title-position">
-							  <label for="productCategory_name " ><strong   class="label-name">产品分类</strong></label>
-							  <div class="my-no-br-right" >
-							  			       		<form:select class="form-control " style="width:280px;"  path="productCategoryParameter.id" items="${productCategoryParameterList }" itemLabel="name" itemValue="id"></form:select>
-<%-- 							  		 <form:textarea  class="form-control textarea-size" path="tyuyi"  /> --%>
-							  </div>
-						</div> 	
-						<div class="input-title-position">
-							  <label for="productCategory_name " ><strong   class="label-name">产品标签</strong></label>
-							  <div class="my-no-br-right" >
-							  	<form:select class="form-control " style="width:280px;"  path="productCategoryLabel.id" items="${productCategoryLabelList }" itemLabel="name" itemValue="id"></form:select>
-							  
-<%-- 							  		 <form:textarea  class="form-control textarea-size" path="tyuyi"  /> --%>
-							  </div>
-						</div> 	
-						 <br>
-				        <br><br>
-				       <div class=" text-center">
-							<button type="button" class="btn btn-primary savebtn" >保存</button>
-							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
-						</div>
-						<br>
-				      </form:form>
-</div>
-</div>
+				<!-- 					这是列表 -->
+<!-- 				<table id="myTable" class="table table-bordered table-striped table-hover"></table>  -->
+		<ul id="tree" ></ul>
+		<input id="name" value=${item.name}  hidden/>
+	  	<input id="parentProductCategoryId" value=${item.parentProductCategoryId}   hidden/>
+	   	<input id="id" value=${item.id}  hidden/>
+       	<div class=" text-center">
+			<button type="button" class="btn btn-primary savebtn" >保存</button>
+			<button type="button" class="btn btn-primary cancelbtn" >取消</button>
+		</div>
+		</div>
+	</div>
+
 <script type="text/javascript" src="${contextPath}/resources/js/manager/productCategory/edit.js"></script>
-<script type="text/javascript">
-var contextPath="${contextPath}";
+<script type="text/javascript" >
+var id=$("#id").val();
+var name =$("#name").val();
+var parentProductCategoryId=$("#parentProductCategoryId").val();
 </script>
 </body>
 </html>
