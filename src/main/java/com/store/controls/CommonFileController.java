@@ -21,6 +21,13 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/file")
 public class CommonFileController {
+
+	public String getProjectPath(HttpServletRequest request) {
+		String basePath = request.getSession().getServletContext().getRealPath("");// D:\programming\hibernate\store\src\main\webapp
+		String path = basePath.replace('/', '\\') + "\\resources\\img\\";
+		return path;
+	}
+
 	@RequestMapping("/upload")
 	@ResponseBody
 	// @RequestMapping(method = RequestMethod.POST, path = "upload/up")
@@ -31,17 +38,16 @@ public class CommonFileController {
 		//////////////
 		if (!file.isEmpty()) {
 			// 上传文件路径
-			String projectName = "store";// 项目名
-			String basePath = request.getSession().getServletContext().getRealPath("");
-			int num = basePath.indexOf(".metadata");
-			String path = basePath.substring(0, num).replace('/', '\\') + projectName + "\\webapp\\resources\\img\\";
+			String filePath = getProjectPath(request);
+			// String path = basePath.substring(0, num).replace('/', '\\') + projectName +
+			// "\\webapp\\resources\\img\\";
 			// String path = "D:\\image";
 			// String path = request.getServletContext().getRealPath("/image/");
 			System.out.println("file " + file);
 			// 上传文件名
 			String filename = file.getOriginalFilename();
 			System.out.println("filename " + filename);
-			File filepath = new File(path, filename);
+			File filepath = new File(filePath, filename);
 			System.out.println("filepath " + filepath);
 			// 判断路径是否存在，如果不存在就创建一个
 			if (!filepath.getParentFile().exists()) {
@@ -50,7 +56,7 @@ public class CommonFileController {
 			// 将上传文件保存到一个目标文件夹中
 			// 保存
 			try {
-				file.transferTo(new File(path + File.separator + filename));
+				file.transferTo(new File(filePath + File.separator + filename));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -81,12 +87,14 @@ public class CommonFileController {
 		// 4.获取要下载的文件输入流
 		InputStream in = null;
 		OutputStream out = null;
-		String projectName = "store";// 项目名
-		String basePath = request.getSession().getServletContext().getRealPath("");
-		int num = basePath.indexOf(".metadata");
-		String filePath = basePath.substring(0, num).replace('/', '\\') + projectName + "\\webapp\\resources\\img\\";
+		// String projectName = "store";// 项目名
+		// String basePath = request.getSession().getServletContext().getRealPath("");
+		// int num = basePath.indexOf(".metadata");
+		// String filePath = basePath.substring(0, num).replace('/', '\\') + projectName
+		// + "\\webapp\\resources\\img\\";
 		// String filePath = basePath.substring(0, num).replace('/', '\\') + projectName
 		// + "\\WebContent\\image\\";
+		String filePath = getProjectPath(request);
 		try {// 获取要下载的文件的绝对路径
 			in = new FileInputStream(filePath + fileName);
 			// in = new FileInputStream("D:/image/" + fileName);

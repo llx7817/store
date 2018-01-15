@@ -1,9 +1,10 @@
 //var listUrl =contextPath + "/manager/productMaintenance/list";
 var uploadUrl=contextPath + "/file/upload.do";
- 
+ var prod
 $(".savebtn").click(function(){
+	
+	
 	var form =$(this).parents(".editForm");
-	debugger
 	 var params = form.serialize();
      var action = form.attr("action");
      //如果验证通过
@@ -22,9 +23,8 @@ var oldfilename=$('#thelist').attr("value");
 if(typeof oldfilename !='undefined' && oldfilename != null&& oldfilename != ""){
 	debugger
 	$("#thelist").html('<a  href="'+contextPath+'/file/download?filename='+encodeURIComponent(oldfilename)+
-			'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:100px"><img src="'+contextPath+
-			"/resources/img/"+oldfilename+'" alt="'+oldfilename+
-	'"/>	<div class="info">"'+oldfilename+'"</div></div></a>');
+			'"><div class="file-item thumbnail upload-state-done" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:100px"><img '+
+			' alt="'+oldfilename+	'"/>	<div class="info">"'+oldfilename+'"</div></div></a>');
 }
 $(function(){  
 /*init webuploader*/  
@@ -68,18 +68,17 @@ $(function(){
  	   // 当有文件添加进来的时候  
  	   uploader.on( 'fileQueued', function( file ) {  // webuploader事件.当选择文件后，文件被加载到文件队列中，触发该事件。等效于 uploader.onFileueued = function(file){...} ，类似js的事件定义。  
  	       debugger
- 	      var $li = $(  
- 				  '<a class=" " href="'+contextPath+'/file/download?filename='+encodeURIComponent(file.name)+'">'+
- 	               '<div id="' + file.id + '" class="file-item thumbnail" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px">' +  
- 	                   '<img>' +  
- 	                   '<div class="info">' + file.name + '</div>' +  
- 	               '</div>'  +'</a>'
- 	               ),  
- 	           $img = $li.find('img');  
+ 	      var str=  '<a class=" " href="'+contextPath+'/file/download.do?filename='+encodeURIComponent(file.name)+'">'+
+           '<div id="' + file.id + '" class="file-item thumbnail" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px">' +  
+              '<img  alt="'+oldfilename+
+			'"/>	<div class="info">"'+oldfilename+'"</div></div></a>';
+	      $list.append( str );  //追加
+	      var $li = $("#" +file.id),  
+	      $img = $li.find('img');  
  	  
  	       // $list为容器jQuery实例  
 // 	       $list.append( $li );  //追加
- 	      $list.html( $li );  
+// 	      $list.html( $li );  
  	       // 创建缩略图  
  	       // 如果为非图片文件，可以不用调用此方法。  
  	       // thumbnailWidth x thumbnailHeight 为 100 x 100  

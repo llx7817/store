@@ -1,14 +1,18 @@
 package com.store.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -80,11 +84,6 @@ public class Product implements Serializable {
 		this.updateTime = userupdateTime;
 	}
 
-	// extends BaseEntity {
-	/**
-	 * 产品图片
-	 */
-	private String productImg;
 	/**
 	 * 产品参数 因为有多个id要存，以,隔开
 	 */
@@ -136,6 +135,7 @@ public class Product implements Serializable {
 	public void setProductParameter(ProductParameter productParameter) {
 		this.productParameter = productParameter;
 	}
+
 	// public String getProductParameter() {
 	// return productParameter;
 	// }
@@ -143,13 +143,21 @@ public class Product implements Serializable {
 	// public void setProductParameter(String productParameter) {
 	// this.productParameter = productParameter;
 	// }
+	/**
+	 * 产品图片
+	 */
+	@OneToMany(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "productImg")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private Collection<BaseFile> productImgList = new ArrayList<BaseFile>();
+	// private BaseEntity productImg;
 
-	public String getProductImg() {
-		return productImg;
+	public Collection<BaseFile> getProductImg() {
+		return productImgList;
 	}
 
-	public void setProductImg(String productImg) {
-		this.productImg = productImg;
+	public void setProductImg(Collection<BaseFile> productImgList) {
+		this.productImgList = productImgList;
 	}
 
 }

@@ -1,22 +1,22 @@
 package com.store.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
 
-//@Entity
-//@Table(name = "BASEENTITY")
-public class BaseEntity implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6435219325026949625L;
-
+/**
+ * 通用的实体基类
+ * 
+ * @author hh
+ *
+ */
+@MappedSuperclass
+public class BaseEntity {
 	/**
 	 * id
 	 */
@@ -29,16 +29,19 @@ public class BaseEntity implements Serializable {
 	/**
 	 * 名称
 	 */
+	@Column(name = "name")
 	private String name;
 
 	/**
 	 * 创建时间
 	 */
-	// private String beginTime;
+	@Column(name = "beginTime", updatable = false)
 	private Date beginTime;
+
 	/**
 	 * 更新时间
 	 */
+	@Column(name = "updateTime")
 	private Date updateTime;
 
 	public String getId() {
@@ -72,19 +75,5 @@ public class BaseEntity implements Serializable {
 	public void setUpdateTime(Date userupdateTime) {
 		this.updateTime = userupdateTime;
 	}
-	// public String getBeginTime() {
-	// return beginTime;
-	// }
-	//
-	// public void setBeginTime(String userbeginTime) {
-	// this.beginTime = userbeginTime;
-	// }
-	//
-	// public String getUpdateTime() {
-	// return updateTime;
-	// }
-	//
-	// public void setUpdateTime(String userupdateTime) {
-	// this.updateTime = userupdateTime;
-	// }
+
 }

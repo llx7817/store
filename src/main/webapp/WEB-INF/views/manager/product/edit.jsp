@@ -32,14 +32,17 @@
 								  <div class="my-no-br-right" >
 <!-- 								  用来存放item   -->
 								<ul class="list-inline">
-								  <li><div id="filePicker">选择图片</div></li>
-								  <li><button id="startUploadBtn" class="btn filePicker btn-default">开始上传</button></li>
+								  <li><div id="filePicker">选择图片</div>
+								  <div id="thelist" class="uploader-list " value="${filename }"></div>  
+								     <div id="filename" value="${filename }"></div></li>
+<!-- 								  <li> -->
+<!-- 								  	<button id="startUploadBtn" class="btn filePicker btn-default">开始上传</button> -->
+<!-- 								  </li> -->
+								  
 								</ul>
 <!-- 									<div id="filePicker">选择图片</div> -->
 	<!-- 								<button type="button" id="filePicker" class="btn filePicker " >选择图片</button>  -->
 <!-- 									<button id="ctlBtn" class="btn btn-default">开始上传</button> -->
-									    <div id="thelist" class="uploader-list " value="${filename }"></div>  
-								     <div id="filename" value="${filename }"></div>
 								  </div>
 							
 						</div> 
