@@ -180,3 +180,23 @@ position: absolute;
     top: 70px;
     width: 75%;
 }
+
+
+
+/*20180114新增*/
+.mainTitle {
+	text-align: center;
+    font-size: large;
+    height: 100px;
+    width: 80%;
+    margin-left: 8%;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+.body-position {
+position: relative;
+    left: 10%;
+    top: 10%;
+    width: 75%;
+}
+.filePickerBtn {width:100%!important;height:100%!important;}  

@@ -16,22 +16,36 @@
 					commandName="item" methodParam="post">
 					<form:hidden path="id" />
 						<br>
+						<ul class="list-inline">
+						<li>
 						<div class="input-title-position">
 								  <label for="product_name"><span class="thick label-name">产品名称</span></label>
 								  <div class="my-no-br-right" >
 								  <form:input path="name"   class="form-control "  size="10"/>
 								  </div>
 						</div> 
-<!-- 						图片上传 -->
+						</li>
+						<li style=" position: relative; left: 30%;">
+							<!-- 						图片上传 -->
 						<div class="input-title-position">
 								  <label for="product_ico"><span class="thick label-name">产品图片</span></label>
 								  <div class="my-no-br-right" >
 <!-- 								  用来存放item   -->
-								     <button type="button" id="filePicker" class="btn filePicker " style=" padding: 0;">选择图片</button> 
-								     <div id="thelist" class="uploader-list " value="${filename }"></div>  
+								<ul class="list-inline">
+								  <li><div id="filePicker">选择图片</div></li>
+								  <li><button id="startUploadBtn" class="btn filePicker btn-default">开始上传</button></li>
+								</ul>
+<!-- 									<div id="filePicker">选择图片</div> -->
+	<!-- 								<button type="button" id="filePicker" class="btn filePicker " >选择图片</button>  -->
+<!-- 									<button id="ctlBtn" class="btn btn-default">开始上传</button> -->
+									    <div id="thelist" class="uploader-list " value="${filename }"></div>  
 								     <div id="filename" value="${filename }"></div>
 								  </div>
+							
 						</div> 
+						</li>
+						</ul>
+
 						<div class="input-title-position">
 							  <label for="product_name " ><strong   class="label-name">产品分类</strong></label>
 							  <div class="my-no-br-right" >

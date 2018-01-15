@@ -11,8 +11,9 @@
  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/basic_style.css"/>
-<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/style.css"/>
+<%-- <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/style.css"/> --%>
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/js/lib/bootstrap3/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/lunBo.css"/>
 
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/js/lib/bootstrap3/css/bootstrap-theme.min.css">
 <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/webuploader/webuploader.css"/>  
@@ -20,7 +21,6 @@
 <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/DataTables-1.10.15/media/css/dataTables.bootstrap.min.css"/>  
 <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/jquery-easyui-1.5.4/themes/default/easyui.css"/>  
 <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/jquery-easyui-1.5.4/themes/icon.css"/>  
-
 
 
 <%-- <script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-1.8.2.min.js"></script> --%>

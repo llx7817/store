@@ -1,15 +1,10 @@
 //var listUrl =contextPath + "/manager/productMaintenance/list";
-var upload=contextPath + "/file/upload";
+var uploadUrl=contextPath + "/file/upload.do";
  
 $(".savebtn").click(function(){
 	var form =$(this).parents(".editForm");
 	debugger
 	 var params = form.serialize();
-//	 params+="&bottomCaseTypes="+bottomCaseTypes+
-//	 "&outLineTypes="+outLineTypes+
-//	 "&colorTypes="+colorTypes+
-//	 "&partTypes="+partTypes+
-//	 "&textureTypes="+textureTypes;
      var action = form.attr("action");
      //如果验证通过
 		$.post(action, params,	function(data) {
@@ -31,31 +26,30 @@ if(typeof oldfilename !='undefined' && oldfilename != null&& oldfilename != ""){
 			"/resources/img/"+oldfilename+'" alt="'+oldfilename+
 	'"/>	<div class="info">"'+oldfilename+'"</div></div></a>');
 }
-
+$(function(){  
 /*init webuploader*/  
  var $list=$("#thelist");   
- var $btn =$("#ctlBtn");   //开始上传  
+ var $btn =$("#startUploadBtn");   //开始上传  
  var thumbnailWidth = 100;   //缩略图高度和宽度 （单位是像素），当宽高度是0~1的时候，是按照百分比计算，具体可以看api文档  
  var thumbnailHeight = 100;  
-$("#filePicker").click(function(){
-	filePicker();
-});
+ filePicker();
+//$("#filePicker").click(function(){
+//	filePicker();
+//});
 
 
 //$(function(){  
 //文件上传方法
 	function filePicker(){  
-		debugger
- 	 var uploader = WebUploader.create({  
+ 	 var uploader =  WebUploader.create({
  	       // 选完文件后，是否自动上传。  
- 	       auto: false,  
+ 	       auto: true,  
  	  
  	       // swf文件路径  
  	       swf: contextPath+'/resources/js/lib/webuploader/Uploader.swf',  
  	  
  	       // 文件接收服务端。  
- 	       server: contextPath+'/file/upload',  
-//  	       server: 'http://localhost:8080/webUpload/manager/upload',
+ 	       server:uploadUrl,  
  	       // 选择文件的按钮。可选。  
  	       // 内部根据当前运行是创建，可能是input元素，也可能是flash.  
  	       pick: '#filePicker',  
@@ -64,9 +58,12 @@ $("#filePicker").click(function(){
  	       accept: {  
  	           title: 'Images',  
  	           extensions: 'gif,jpg,jpeg,bmp,png,txt',  
- 	           mimeTypes: 'image/*'  
+ 	          mimeTypes:'image/jpg,image/jpeg,image/png'
+// 	           mimeTypes: 'image/*'  
  	       },  
- 	       method:'POST',  
+ 	      // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+// 	      resize: false,
+ 	       method:'POST'  
  	   });  
  	   // 当有文件添加进来的时候  
  	   uploader.on( 'fileQueued', function( file ) {  // webuploader事件.当选择文件后，文件被加载到文件队列中，触发该事件。等效于 uploader.onFileueued = function(file){...} ，类似js的事件定义。  
@@ -143,8 +140,8 @@ $("#filePicker").click(function(){
 // 	        uploader.upload();  
 // 	        console.log("上传成功");  
 // 	      });  
-}
-// 	  });  
+	}
+});  
 	
 	
 	

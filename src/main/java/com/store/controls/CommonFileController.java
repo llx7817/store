@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/file")
-public class commonFileController {
+public class CommonFileController {
 	@RequestMapping("/upload")
 	@ResponseBody
 	// @RequestMapping(method = RequestMethod.POST, path = "upload/up")
@@ -34,7 +34,7 @@ public class commonFileController {
 			String projectName = "store";// 项目名
 			String basePath = request.getSession().getServletContext().getRealPath("");
 			int num = basePath.indexOf(".metadata");
-			String path = basePath.substring(0, num).replace('/', '\\') + projectName + "\\WebContent\\image\\";
+			String path = basePath.substring(0, num).replace('/', '\\') + projectName + "\\webapp\\resources\\img\\";
 			// String path = "D:\\image";
 			// String path = request.getServletContext().getRealPath("/image/");
 			System.out.println("file " + file);
@@ -84,7 +84,9 @@ public class commonFileController {
 		String projectName = "store";// 项目名
 		String basePath = request.getSession().getServletContext().getRealPath("");
 		int num = basePath.indexOf(".metadata");
-		String filePath = basePath.substring(0, num).replace('/', '\\') + projectName + "\\WebContent\\image\\";
+		String filePath = basePath.substring(0, num).replace('/', '\\') + projectName + "\\webapp\\resources\\img\\";
+		// String filePath = basePath.substring(0, num).replace('/', '\\') + projectName
+		// + "\\WebContent\\image\\";
 		try {// 获取要下载的文件的绝对路径
 			in = new FileInputStream(filePath + fileName);
 			// in = new FileInputStream("D:/image/" + fileName);

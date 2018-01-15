@@ -29,15 +29,15 @@
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion" 
 					   href="#collapseTwo">
-						文章管理
+						网站页面管理
 					</a>
 				</h4>
 			</div>
 			<div id="collapseTwo" class="panel-collapse collapse">
 				<div class="panel-body" style="padding: 0px;">
 					<ul class="list-group" style="margin-bottom: 0px;">
-						<li class="list-group-item" >免费域名注册</li>
-						<li class="list-group-item">免费 Window 空间托管</li>
+						<li class="list-group-item" >首页图片更新</li>
+						<li class="list-group-item">首页文字更新</li>
 						<li class="list-group-item">图像的数量</li>
 						<li class="list-group-item">24*7 支持</li>
 						<li class="list-group-item">每年更新成本</li>
