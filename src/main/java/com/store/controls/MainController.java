@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,16 +35,11 @@ public class MainController {
 	@Autowired
 	private CommonService<ProductCategory, String> commonServiceProductCategory;
 
+	// 主页面
 	@RequestMapping("list")
 	public String list(Model model, Product product) {
 
 		return "main/list";
-	}
-
-	@RequestMapping("add")
-	public String add(Model model, Product product) {
-
-		return "main/edit";
 	}
 
 	@RequestMapping("edit")
@@ -61,7 +55,7 @@ public class MainController {
 		model.addAttribute("productLabelList", productLabelList);
 		model.addAttribute("productParameterList", productParameterList);
 		model.addAttribute("productCategoryList", productCategoryList);
-		model.addAttribute("filename", item.getProductImg());
+		model.addAttribute("filename", item.getProductImgIds());
 		return "main/edit";
 	}
 
@@ -124,14 +118,14 @@ public class MainController {
 
 	@RequestMapping("load/delete")
 	@ResponseBody
-	public JSONObject delete(String id) throws JSONException {
-		boolean flag = false;
+	public Map<String, String> delete(String id) throws JSONException {
+		String flag = "false";
 		if (!id.equals("")) {
 			commonServiceProduct.deleteById(Product.class, id);
-			flag = true;
+			flag = "true";
 		}
-		JSONObject obj = new JSONObject();
-		obj.put("flag", flag);
-		return obj;
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("flag", flag);
+		return map;
 	}
 }

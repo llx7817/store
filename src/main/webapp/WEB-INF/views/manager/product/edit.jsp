@@ -10,7 +10,13 @@
 <body>
 <div class="main-body-position">
 		<div class="container-position">
-				<div class="mydiv gray-background" >添加商品</div> 
+				<div class="mydiv gray-background" >
+				<c:if test="${empty item.id }">
+	        		添加新商品
+	        	</c:if>
+	        	<c:if test="${not empty item.id }">
+	        		编辑商品
+	        	</c:if></div> 
 				<br>
 <form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/product/load/save.do"
 					commandName="item" methodParam="post">
@@ -19,7 +25,7 @@
 						<ul class="list-inline">
 						<li>
 						<div class="input-title-position">
-								  <label for="product_name"><span class="thick label-name">产品名称</span></label>
+								  <label for="product_name"><span class="thick label-name">商品名称</span></label>
 								  <div class="my-no-br-right" >
 								  <form:input path="name"   class="form-control "  size="10"/>
 								  </div>
@@ -28,29 +34,26 @@
 						<li style=" position: relative; left: 30%;">
 							<!-- 						图片上传 -->
 						<div class="input-title-position">
-								  <label for="product_ico"><span class="thick label-name">产品图片</span></label>
+								  <label for="product_ico"><span class="thick label-name">商品图片</span></label>
 								  <div class="my-no-br-right" >
+								  	<form:hidden path="productImgIds" />
 <!-- 								  用来存放item   -->
 								<ul class="list-inline">
 								  <li><div id="filePicker">选择图片</div>
-								  <div id="thelist" class="uploader-list " value="${filename }"></div>  
-								     <div id="filename" value="${filename }"></div></li>
-<!-- 								  <li> -->
-<!-- 								  	<button id="startUploadBtn" class="btn filePicker btn-default">开始上传</button> -->
-<!-- 								  </li> -->
-								  
+								  		  <div id="thelist" class="uploader-list " >
+<!-- 								  		  图片的位置 -->
+								  		  </div>  
+<!-- 								     <div id="filename" ></div> -->
+								   </li>
 								</ul>
-<!-- 									<div id="filePicker">选择图片</div> -->
-	<!-- 								<button type="button" id="filePicker" class="btn filePicker " >选择图片</button>  -->
-<!-- 									<button id="ctlBtn" class="btn btn-default">开始上传</button> -->
-								  </div>
+							</div>
 							
 						</div> 
 						</li>
 						</ul>
 
 						<div class="input-title-position">
-							  <label for="product_name " ><strong   class="label-name">产品分类</strong></label>
+							  <label for="product_name " ><strong   class="label-name">商品分类</strong></label>
 							  <div class="my-no-br-right" >
 							  			       		<form:select class="form-control " style="width:280px;"  path="productCategory.id" items="${productCategoryList }" itemLabel="name" itemValue="id">
 <%-- 							  			       		 <form:option value="">Please select</form:option>   --%>
@@ -59,16 +62,29 @@
 							  </div>
 						</div> 	
 						<div class="input-title-position">
-							  <label for="product_name " ><strong   class="label-name">产品标签</strong></label>
+							  <label for="product_name " ><strong   class="label-name">商品标签</strong></label>
 							  <div class="my-no-br-right" >
 							  	<form:select class="form-control " style="width:280px;"  path="productLabel.id" items="${productLabelList }" itemLabel="name" itemValue="id"></form:select>
 							  </div>
 						</div> 	
 						<div class="input-title-position">
-							  <label for="product_name " ><strong   class="label-name">产品参数</strong></label>
+							  <label for="product_name " ><strong   class="label-name">以下是商品参数</strong></label>
 							  <div class="my-no-br-right" >
-<%-- 							  	<form:select class="form-control " style="width:280px;"  path="productLabel.id" items="${productLabelList }" itemLabel="name" itemValue="id"></form:select> --%>
+<%-- 							  	<form:select class="form-control " style="width:280px;"  path="productLabel.id" items="${productParameterList }" itemLabel="name" itemValue="id"></form:select> --%>
 							  </div>
+						</div> 
+						<div id="productParameterLists">
+							<c:forEach var="itemData" items="${productParameterList}" varStatus="status">	
+<%-- 								<c:if test="${item.type eq 'a' }"> --%>
+									<div class="input-title-position">
+											  <label for="product_name"><span class="thick label-name">${itemData.name}</span></label>
+											  <div class="my-no-br-right" >
+<%-- 											  <form:input path="item.id"   class="form-control "  size="10"/> --%>
+											  <input  myid="${itemData.id}"  productParameterDataId="${itemData.productParameterDataId}"   value="${itemData.value}" class="form-control  inputProductParameter"  size="10"/>
+											  </div>
+									</div> 
+<%-- 								</c:if> --%>
+							</c:forEach>
 						</div> 
 						 <br>
 				        <br><br>

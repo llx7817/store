@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.store.entity.PageData;
 
 /**
@@ -15,6 +17,15 @@ import com.store.entity.PageData;
  *
  */
 public final class DataUtil {
+	/*
+	 * 获取工程文件的路径
+	 */
+	public static String getProjectPath(HttpServletRequest request) {
+		String basePath = request.getSession().getServletContext().getRealPath("");// D:\programming\hibernate\store\src\main\webapp
+		String path = basePath.replace('/', '\\') + "\\resources\\img\\";
+		return path;
+	}
+
 	/*
 	 * 用硬编码解决在URL中传递中文
 	 */

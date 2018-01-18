@@ -27,12 +27,6 @@ public class BaseEntity {
 	private String id;
 
 	/**
-	 * 名称
-	 */
-	@Column(name = "name")
-	private String name;
-
-	/**
 	 * 创建时间
 	 */
 	@Column(name = "beginTime", updatable = false)
@@ -50,14 +44,6 @@ public class BaseEntity {
 
 	public void setId(String userid) {
 		this.id = userid;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Date getBeginTime() {

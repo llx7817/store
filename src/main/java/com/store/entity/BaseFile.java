@@ -1,10 +1,12 @@
 package com.store.entity;
 
-import java.io.File;
 import java.io.Serializable;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -25,7 +27,7 @@ public class BaseFile extends BaseEntity implements Serializable {
 	/**
 	 * 文件大小
 	 */
-	private int size;
+	private long size;
 	/**
 	 * 文件类型
 	 */
@@ -39,8 +41,33 @@ public class BaseFile extends BaseEntity implements Serializable {
 	/**
 	 * 文件数据
 	 */
-	@Column(name = "fileData")
-	private File fileData;
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(name = "fileData", columnDefinition = "BLOB", nullable = true)
+	private byte[] content;
+	// @Column(name = "fileData")
+	// private File fileData;
+	/**
+	 * 名称
+	 */
+	@Column(name = "name")
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public byte[] getContent() {
+		return this.content;
+	}
+
+	public void setContent(byte[] content) {
+		this.content = content;
+	}
 
 	public String getPath() {
 		return path;
@@ -50,13 +77,13 @@ public class BaseFile extends BaseEntity implements Serializable {
 		this.path = path;
 	}
 
-	public File getFileData() {
-		return fileData;
-	}
-
-	public void setFileData(File fileData) {
-		this.fileData = fileData;
-	}
+	// public File getFileData() {
+	// return fileData;
+	// }
+	//
+	// public void setFileData(File fileData) {
+	// this.fileData = fileData;
+	// }
 
 	public String getContentType() {
 		return contentType;
@@ -66,11 +93,11 @@ public class BaseFile extends BaseEntity implements Serializable {
 		this.contentType = contentType;
 	}
 
-	public int getSize() {
+	public long getSize() {
 		return size;
 	}
 
-	public void setSize(int size) {
+	public void setSize(long size) {
 		this.size = size;
 	}
 
