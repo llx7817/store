@@ -97,8 +97,5 @@
 </div>
 </div>
 <script type="text/javascript" src="${contextPath}/resources/js/manager/product/edit.js"></script>
-<script type="text/javascript">
-var contextPath="${contextPath}";
-</script>
 </body>
 </html>

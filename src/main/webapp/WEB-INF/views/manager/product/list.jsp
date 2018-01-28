@@ -10,7 +10,8 @@
 <body>
 	<div class="main-body-position">
 		<div class="container-position">
-				<div class="mydiv gray-background" >商品列表</div> 
+<!-- 				<div class="mydiv gray-background" >商品列表</div>  -->
+				<h4 class="my-list-header">商品列表</h4>
 				<br>
 				<!-- 					这是列表 -->
 				<table id="myTable" class="table table-bordered table-striped table-hover"></table> 

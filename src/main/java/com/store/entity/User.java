@@ -2,29 +2,21 @@ package com.store.entity;
 
 import java.io.Serializable;
 
-//@Entity
-//@Table(name = "USER")
-public class User
-		// extends BaseEntity {
-		implements Serializable {
-	// /**
-	// * 用户id
-	// */
-	// @Id
-	// @GenericGenerator(name = "UUID", strategy = "uuid")
-	// @GeneratedValue(generator = "UUID")
-	// @Column(name = "id")
-	// private String id;
-	//
-	// /**
-	// * 用户名
-	// */
-	// private String name;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "USER")
+public class User extends BaseEntity implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7462643725067207273L;
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 用户姓名
+	 */
+	private String name;
 
 	/**
 	 * 用户密码
@@ -34,17 +26,12 @@ public class User
 	/**
 	 * 真实姓名
 	 */
-	private String realName;
+	private String value;
 
 	/**
-	 * 移动电话
+	 * 电话号码
 	 */
-	private String mobilePhone;
-
-	/**
-	 * 固定电话
-	 */
-	private String phone;
+	private String phoneNumber;
 
 	/**
 	 * 地址
@@ -57,11 +44,6 @@ public class User
 	private String email;
 
 	/**
-	 * 组织机构
-	 */
-	private String orgname;
-
-	/**
 	 * 说明
 	 */
 	private String notes;
@@ -69,28 +51,22 @@ public class User
 	/**
 	 * 用户头像
 	 */
-	private String userIcon;
+	private String userIconId;
 
-	// public String getId() {
-	// return id;
-	// }
-	//
-	// public void setId(String userid) {
-	// this.id = userid;
-	// }
-	// public String getName() {
-	// return name;
-	// }
-	//
-	// public void setName(String name) {
-	// this.name = name;
-	// }
-	public String getPhone() {
-		return phone;
+	public String getName() {
+		return name;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getAddress() {
@@ -109,14 +85,6 @@ public class User
 		this.email = email;
 	}
 
-	public String getOrgname() {
-		return orgname;
-	}
-
-	public void setOrgname(String orgname) {
-		this.orgname = orgname;
-	}
-
 	public String getNotes() {
 		return notes;
 	}
@@ -125,20 +93,12 @@ public class User
 		this.notes = notes;
 	}
 
-	public String getRealName() {
-		return realName;
+	public String getValue() {
+		return value;
 	}
 
-	public void setRealName(String realName) {
-		this.realName = realName;
-	}
-
-	public String getMobilePhone() {
-		return mobilePhone;
-	}
-
-	public void setMobilePhone(String mobilePhone) {
-		this.mobilePhone = mobilePhone;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 	public String getPassword() {
@@ -149,12 +109,12 @@ public class User
 		this.password = password;
 	}
 
-	public String getUserIcon() {
-		return userIcon;
+	public String getUserIconId() {
+		return userIconId;
 	}
 
-	public void setUserIcon(String userIcon) {
-		this.userIcon = userIcon;
+	public void setUserIconId(String userIconId) {
+		this.userIconId = userIconId;
 	}
 
 }

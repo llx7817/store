@@ -2,12 +2,14 @@ package com.store.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.store.entity.BaseFile;
 import com.store.entity.PageData;
 
 /**
@@ -17,8 +19,20 @@ import com.store.entity.PageData;
  *
  */
 public final class DataUtil {
+
 	/*
-	 * 获取工程文件的路径
+	 * 根据文件标记来获取图片等数据
+	 */
+	public static List<BaseFile> geBaseFilesBySign(String sign) {
+		List<BaseFile> baseFileList = new ArrayList<BaseFile>();
+		if (!sign.equals("")) {
+			baseFileList = MyServiceUtil.getBaseFileService().getByAttribute(BaseFile.class, "path", sign);
+		}
+		return baseFileList;
+	}
+
+	/*
+	 * 获取工程文件的路径 貌似没什么用了现在
 	 */
 	public static String getProjectPath(HttpServletRequest request) {
 		String basePath = request.getSession().getServletContext().getRealPath("");// D:\programming\hibernate\store\src\main\webapp

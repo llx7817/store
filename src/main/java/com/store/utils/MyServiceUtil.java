@@ -1,7 +1,18 @@
 package com.store.utils;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+import com.store.entity.BaseFile;
+import com.store.entity.Product;
+import com.store.entity.ProductCategory;
+import com.store.entity.ProductLabel;
+import com.store.entity.ProductParameter;
+import com.store.entity.ProductParameterData;
 import com.store.services.CommonService;
 import com.store.services.MyService;
 
@@ -11,27 +22,54 @@ import com.store.services.MyService;
  * @author hh
  *
  */
-public final class MyServiceUtil {
-	private static MyService service;
+@Lazy(false)
+@Component
+public class MyServiceUtil {
+	@Autowired
+	private MyService service;
+	private static MyServiceUtil myServiceUtil;
 
-	public static void setService(MyService service) {
-		MyServiceUtil.service = service;
+	/** */
+	@PostConstruct
+	public void init() {
+		myServiceUtil = this;
+		myServiceUtil.service = this.service;
 	}
 
-	public static CommonService getCommonService() {
-		return service.getCommonService();
+	// public static void setService(MyService service) {
+	// myServiceUtil.service = service;
+	// }
+
+	// public MyService myServiceUtil.service {
+	// return myServiceUtil.service;
+	// }
+
+	public static CommonService<BaseFile, String> getBaseFileService() {
+		return myServiceUtil.service.getBaseFileService();
 	}
 
-	// public static UserService getUserService() {
-	// return service.getUserService();
-	// }
+	public static CommonService<Product, String> getProductService() {
+		return myServiceUtil.service.getProductService();
+	}
 
-	// public static BaseDao getBaseDao() {
-	// return service.getBaseDao();
-	// }
+	public static CommonService<ProductLabel, String> getProductLabelService() {
+		return myServiceUtil.service.getProductLabelService();
+	}
+
+	public static CommonService<ProductParameter, String> getProductParameterService() {
+		return myServiceUtil.service.getProductParameterService();
+	}
+
+	public static CommonService<ProductParameterData, String> getProductParameterDataService() {
+		return myServiceUtil.service.getProductParameterDataService();
+	}
+
+	public static CommonService<ProductCategory, String> getProductCategoryService() {
+		return myServiceUtil.service.getProductCategoryService();
+	}
 
 	public static JdbcTemplate getJdbcTemplate() {
-		return service.getJdbcTemplate();
+		return myServiceUtil.service.getJdbcTemplate();
 	}
 
 }

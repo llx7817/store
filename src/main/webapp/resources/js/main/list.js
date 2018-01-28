@@ -1,116 +1,8 @@
 //var ClassName=""
-var searchUrl =contextPath + "/main/load/search.do";
-var delUrl =contextPath + "/main/load/delete.do";
-var editUrl =contextPath + "/main/edit.do";
-var listUrl =contextPath + "/main/list.do";
-$(document).ready(function(){
-    $('#myTable').DataTable({
-    	iDisplayLength: 10,	
-    	bStateSave:true,
-    	bDestroy:true,
-        bSort: false,
-        bAutoWidth:false,
-        serverSide: true,
-        aoColumns: [{					//设置自定义列
-            title: "<input type='checkbox' value='option1' name='b' id='selectAll'>",
-            sWidth: '10px',
-            mData: 'id',
-            mRender: function (value) {
-                return "<input type='checkbox' value='" + value + "' name='ids'>";
-            }
-        },{
-			sTitle: '名称',
-			sWidth:'100px',
-			mData: 'name'
-		},{
-			sTitle: '标签',
-			sWidth:'100px',
-			mData: 'productLabel',
-			mRender: function (value,f,row,rowcols) {
-            	 var myValue=" ";
-            	 if(typeof value !='undefined' && value != null&& value != ""){
-            		 myValue=value.name;
-            	 }
-                 return myValue;
-            }
-		},{
-			sTitle: '分类',
-			sWidth:'100px',
-			mData: 'productCategory',
-			mRender: function (value,f,row,rowcols) {
-           	 var myValue=" ";
-           	 if(typeof value !='undefined' && value != null&& value != ""){
-           		 myValue=value.name;
-           	 }
-                return myValue;
-           }
-		},{
-			sTitle: '添加时间',
-			sWidth:'100px',
-			mData: "updateTime"
-//			,mRender: function (value,f,row,rowcols) {
-//				 debugger
-//				 if(typeof value =='undefined' || value== null|| value == ""){
-//	           		 value="1111";
-//	           	 }
-//                return value;
-//           }
-		}, {
-            title: '操作',
-            mData: 'id',
-            sWidth:'250px',
-            mRender: function (value) {
-//            	var json = {
-//            			"编辑":{
-//            				clazz:ClassName,
-//            				value:value,
-//    						relid:'edit'
-//    					},
-//    					"删除":{
-//    						clazz:ClassName,
-//    						value:value,
-//    						relid:'delete'
-//    					}
-//                	};
-            	var string= '<button type="button" myid="'+value+'" class="btn btn-link editbtn">编辑</button>'+
-                '<button type="button" myid="'+value+'" class="btn btn-link deletebtn" data-toggle="modal" data-target="#myModal" >删除</button>';
-            	 return string;
-            }
-        }],
-        bServerSide: true,
-        sAjaxSource: searchUrl,
-        sAjaxDataProp: 'rows',
-        fnServerData: function (sSource, aoData, fnCallback) {//查询
-//        	debugger
-        	var type="";
-            aodata = aoData;
-            var begin = getElement(aoData, 'iDisplayStart'),
-                pageSize = getElement(aoData, 'iDisplayLength'),
-                pageNumber = Math.floor(begin / pageSize) + 1;
-            //额外参数
-            var condition;
-			condition = null;
-            var serverParams = {
-                begin: begin,
-                pageSize: pageSize,
-                pageNumber:pageNumber,
-            };
-            
-            $.getJSON(sSource, serverParams, function (json, retFlag) {//数据交换，传递参数，返回数据
-            	if (retFlag == 'success') {
-                	window.rowsLen = json.rows.length;
-                    json.iTotalDisplayRecords = json.iTotalRecords = json.total;
-                    fnCallback(json);
-                }
-            });
-        },
-
-    });
-  } );
-
-
-
-
+//var searchUrl =contextPath + "/main/load/search.do";
+//var delUrl =contextPath + "/main/load/delete.do";
+//var editUrl =contextPath + "/main/edit.do";
+//var listUrl =contextPath + "/main/list.do";
 
 
 
@@ -139,7 +31,8 @@ $(document).on("click",".deletebtn",function(){//修改成这样的写法
 
 
 
-function getElement(aoData, prop) {
+function getLunBoImg() {
+	
     for (var i = 0, len = aoData.length; i < len; i++) {
         var data = aoData[i];
         if (data.name == prop) {

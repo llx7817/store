@@ -14,7 +14,7 @@
 			<div id="collapseOne" class="panel-collapse collapse in">
 				<div class="panel-body" style="padding: 0px;">
 					<ul class="list-group" style="margin-bottom: 0px;">
-						<li class="list-group-item" ><a href="${contextPath}/store/manager/product/edit.do" >添加商品</a></li>
+						<li class="list-group-item  active" ><a href="${contextPath}/store/manager/product/edit.do" >添加商品</a></li>
 <!-- 						<li class="list-group-item" ><button type="button" myid="" class="btn btn-link addbtn">添加商品</button> </li> -->
 						<li class="list-group-item" ><a href="${contextPath}/store/manager/product/list.do" >管理商品</a></li>
 						<li class="list-group-item" ><a href="${contextPath}/store/manager/productParameter/list.do" >管理商品参数</a></li>

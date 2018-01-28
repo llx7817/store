@@ -33,13 +33,15 @@ public class CommonFileController {
 
 	@RequestMapping("/uploadToDataBase")
 	@ResponseBody
-	public Object uploadToDataBase(@RequestParam(value = "file", required = false) MultipartFile file)
-			throws IllegalStateException, IOException {
+	public Object uploadToDataBase(@RequestParam(value = "file", required = false) MultipartFile file,
+			@RequestParam(value = "sign", required = false) String sign) throws IllegalStateException, IOException {
+		// DataUtil.getImg(file, sign);
 		BaseFile baseFile = new BaseFile();
 		Map<String, String> map = new HashMap<String, String>();
 		String filenName = file.getOriginalFilename();
 		String fileId = "";
 		if (!file.isEmpty()) {
+			baseFile.setPath(sign);// 这个算是保留属性吧，现在作为标记来用，默认为空喽
 			baseFile.setName(filenName);
 			baseFile.setSize(file.getSize());
 			baseFile.setContentType(file.getContentType());
