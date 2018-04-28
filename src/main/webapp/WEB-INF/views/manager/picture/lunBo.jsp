@@ -11,7 +11,8 @@
 <div class="main-body-position">
 		<div class="container-position">
 				<div class="">
-								  <label for="product_ico"><span class="thick label-name">轮播图片</span></label>
+					<h4 class="my-list-header">轮播图片</h4>
+<!-- 								  <label for="product_ico"><span class="thick label-name">轮播图片</span></label> -->
 								  <div class="my-no-br-right" >
 								  	<input id="pictureIds"  value="${pictureIds}"  hidden/>
 <!-- 								  用来存放item   -->

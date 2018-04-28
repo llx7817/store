@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- <%@ include file="../../common.jsp"%> --%>
-	<div class="container" style="margin-left: 0px;width: 20%;">
+	<div class="container" style="margin-left: 0px;width: 20%; margin-top: 60px;">
 		<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -37,6 +37,9 @@
 				<div class="panel-body" style="padding: 0px;">
 					<ul class="list-group" style="margin-bottom: 0px;">
 						<li class="list-group-item" >首页图片更新</li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/picture/lunBo.do" >管理首页轮播图片</a></li>
+						<li class="list-group-item" ><a href="${contextPath}/store/manager/user/list.do" >管理用户</a></li>
+
 						<li class="list-group-item">首页文字更新</li>
 						<li class="list-group-item">图像的数量</li>
 						<li class="list-group-item">24*7 支持</li>

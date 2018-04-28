@@ -106,6 +106,20 @@ public class Product extends BaseEntity implements Serializable {
 		this.productImgIds = productImgIds;
 	}
 
+	/**
+	 * 产品细节，详细介绍，图片形式
+	 */
+	@Column(name = "details")
+	private String detailIds;
+
+	public String getDetailIds() {
+		return detailIds;
+	}
+
+	public void setDetailIds(String detailIds) {
+		this.detailIds = detailIds;
+	}
+
 	// @OneToMany(cascade = { CascadeType.ALL })
 	// @JoinColumn(name = "productImg")
 	// @NotFound(action = NotFoundAction.IGNORE)

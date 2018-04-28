@@ -5,27 +5,48 @@ var downloadUrl=contextPath+"/file/downloadFromDataBase.do";
 var editUrl =contextPath + "/manager/product/edit.do";
 var saveProductParameterDataUrl =contextPath + "/manager/product/load/saveProductParameterData.do";
 //后台传过来的图片id字符串
-var oldproductImgIds=$('#productImgIds').val();
-var oldproductImgList=oldproductImgIds.split(',');//转成数组
-//新图片ID数组
- var productImgList=[];
-if(typeof oldproductImgIds !='undefined' && oldproductImgIds != null&& oldproductImgIds != ""){
-	for(var i=0;i<oldproductImgList.length;i++){
-		var imgDownloadUrl=downloadUrl+'?id='+oldproductImgList[i];
-		//这里不知道是下载还是看大图
-		$("#thelist").append(
-				'<div class="file-item thumbnail upload-state-done" imgid="' + oldproductImgList[i]+'"  style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:100px">'+
-				'<div style=""><a href="#" class="close deleteImgbtn" data-dismiss="alert">	×</a><a  href="'+imgDownloadUrl+'&download=true" ><img src="'+imgDownloadUrl+'&download=false" alt="图片无法显示"/>	</a></div></div>');
+var oldProductImgIds=$('#productImgIds').val();
+var oldDetailIds=$('#detailIds').val();
+//var oldproductImgList=oldproductImgIds.split(',');//转成数组
+oldImgListFun(oldProductImgIds,"ProductImgIds");
+oldImgListFun(oldDetailIds,"DetailIds");
+function oldImgListFun(oldImgIds,type){
+//	//新图片ID数组
+//	 var ImgList=[];
+	if(typeof oldImgIds !='undefined' && oldImgIds != null&& oldImgIds != ""){
+		var oldImgList=oldImgIds.split(',');//转成数组
+		for(var i=0;i<oldImgList.length;i++){
+			var imgDownloadUrl=downloadUrl+'?id='+oldImgList[i];
+			//这里不知道是下载还是看大图
+			$("#thelist"+type).append(
+					'<div class="file-item thumbnail upload-state-done" imgid="' + oldImgList[i]+'" myType="' + type+'" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:100px">'+
+					'<div style=""><a href="#" class="close deleteImgbtn" data-dismiss="alert">	×</a><a  href="'+imgDownloadUrl+'&download=true" ><img src="'+imgDownloadUrl+'&download=false" alt="图片无法显示"/>	</a></div></div>');
+		}
 	}
+	
 }
+
+//新图片ID数组
+// var productImgList=[];
+//if(typeof oldproductImgIds !='undefined' && oldproductImgIds != null&& oldproductImgIds != ""){
+//	var oldproductImgList=oldproductImgIds.split(',');//转成数组
+//	for(var i=0;i<oldproductImgList.length;i++){
+//		var imgDownloadUrl=downloadUrl+'?id='+oldproductImgList[i];
+//		//这里不知道是下载还是看大图
+//		$("#thelist").append(
+//				'<div class="file-item thumbnail upload-state-done" imgid="' + oldproductImgList[i]+'"  style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px;width:100px">'+
+//				'<div style=""><a href="#" class="close deleteImgbtn" data-dismiss="alert">	×</a><a  href="'+imgDownloadUrl+'&download=true" ><img src="'+imgDownloadUrl+'&download=false" alt="图片无法显示"/>	</a></div></div>');
+//	}
+//}
 
 $(function(){  
 /*init webuploader*/  
- var $list=$("#thelist");   
- var $btn =$("#startUploadBtn");   //开始上传  
- var thumbnailWidth = 100;   //缩略图高度和宽度 （单位是像素），当宽高度是0~1的时候，是按照百分比计算，具体可以看api文档  
- var thumbnailHeight = 100;  
- filePicker();
+// var $list=$("#thelist"); 
+// var $btn =$("#startUploadBtn");   //开始上传  
+// var thumbnailWidth = 100;   //缩略图高度和宽度 （单位是像素），当宽高度是0~1的时候，是按照百分比计算，具体可以看api文档  
+// var thumbnailHeight = 100;  
+ filePicker("DetailIds");
+ filePicker("ProductImgIds");
 //$("#filePicker").click(function(){
 //	filePicker();
 //});
@@ -33,7 +54,11 @@ $(function(){
 
 //$(function(){  
 //文件上传方法
-	function filePicker(){  
+	function filePicker(type){  
+		var $list=$("#thelist"+type); 
+		 var $btn =$("#startUploadBtn");   //开始上传 
+		 var thumbnailWidth = 100;   //缩略图高度和宽度 （单位是像素），当宽高度是0~1的时候，是按照百分比计算，具体可以看api文档  
+		 var thumbnailHeight = 100;  
  	 var uploader =  WebUploader.create({
  	       // 选完文件后，是否自动上传。  
  	       auto: true,  
@@ -43,7 +68,7 @@ $(function(){
  	       server:uploadToFileUrl,  
  	       // 选择文件的按钮。可选。  
  	       // 内部根据当前运行是创建，可能是input元素，也可能是flash.  
- 	       pick: '#filePicker',  
+ 	       pick: '#filePicker'+type,  
  	       // 允许选择图片文件。  
  	       accept: {  
  	           title: 'Images',  
@@ -58,7 +83,7 @@ $(function(){
  	   // 当有文件添加进来的时候  
  	   uploader.on( 'fileQueued', function( file ) {  // webuploader事件.当选择文件后，文件被加载到文件队列中，触发该事件。等效于 uploader.onFileueued = function(file){...} ，类似js的事件定义。  
  	       debugger
- 	      var str=  '<div id="' + file.id + '" imgid=""  class="file-item thumbnail" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px">' +  
+ 	      var str=  '<div id="' + file.id + '" imgid=""  myType="' + type+'"  class="file-item thumbnail" style="	margin-bottom: 15px;margin-top: 12; display:inline-block ;margin-right:12px">' +  
  	     '<a class=" " href=""> <img  alt="'+file.name+'"/></a></div>';
  	      // $list为容器jQuery实例  
  	       $list.append( str );  //追加
@@ -161,16 +186,28 @@ $(document).on("click",".deleteImgbtn",function(){//修改成这样的写法
 //保存数据到数据库
 $(document).on("click",".savebtn",function(){//修改成这样的写法
 //$(".savebtn").click(function(){//这样写可能thislist找不到后代元素，因为是新生成的
-	var arrayList=$("#thelist").find("div[imgid]");
 	var productParameterObjects=$("#productParameterLists").find("input");
+	//新图片ID数组
+	 var productImgList=[];
+	var arrayList=$("#thelist"+"ProductImgIds").find("div[myType='ProductImgIds']");
 //	$(selector).each(function(index,element))
 	$.each(arrayList,function(i,val){ 
 		var imgid=val.attributes[1].nodeValue;
 		productImgList.push(imgid);
 //		alert(i); 
 		});
-	var imgids=productImgList.toString();
-	$("#productImgIds").val(imgids);
+//	var imgids=productImgList.toString();
+	$("#productImgIds").val(productImgList.toString());
+	//商品详细
+	//新商品详细图片ID数组
+	 var DetailList=[];
+	var arrayList2=$("#thelist"+"DetailIds").find("div[myType='DetailIds']");
+	$.each(arrayList2,function(i,val){ 
+		var imgid=val.attributes[1].nodeValue;
+		DetailList.push(imgid);
+		});
+	$("#detailIds").val(DetailList.toString());
+	
 	var form =$(this).parents(".editForm");
 	 var params = form.serialize();
 //	 params=params+"&itemList="+itemList;

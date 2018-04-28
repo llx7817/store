@@ -43,17 +43,17 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
+<!--             <li><a href="#">Dashboard</a></li> -->
+<!--             <li><a href="#">Settings</a></li> -->
             <li>
 <!--             	<a href="#"> -->
 <!--             	 type="button"  -->
-	            	<a  class="" data-toggle="modal" data-target="#myModal" href="#">
+	            	<a  class="" data-toggle="modal" data-target="#myModal" href="#" id="login">
 						登录/注册
 <!-- 					</a> -->
 				</a>
 			</li>
-            <li><a href="#">Help</a></li>
+<!--             <li><a href="#">Help</a></li> -->
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">

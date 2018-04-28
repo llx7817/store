@@ -50,6 +50,12 @@ public class ProductController {
 		List<ProductLabel> productLabelList = commonServiceProductLabel.getAll(ProductLabel.class);
 		List<ProductCategory> productCategoryList = commonServiceProductCategory.getAll(ProductCategory.class);
 		List<ProductParameter> productParameterList = commonServiceProductParameter.getAll(ProductParameter.class);
+		List<ProductParameterData> productParameterDataList = new ArrayList<ProductParameterData>();
+		if (!id.equals("")) {
+			item = commonServiceProduct.get(Product.class, id);
+			productParameterDataList = commonServiceProductParameterData.getByAttribute(ProductParameterData.class,
+					"productId", id);
+		}
 		List<Map<String, String>> productParameterMapList = new ArrayList<Map<String, String>>();
 		for (ProductParameter productParameter : productParameterList) {
 			Map<String, String> map = new HashMap<String, String>();
@@ -57,9 +63,6 @@ public class ProductController {
 			map.put("name", productParameter.getName());
 			// map.put("productId", id);
 			if (!id.equals("")) {
-				item = commonServiceProduct.get(Product.class, id);
-				List<ProductParameterData> productParameterDataList = commonServiceProductParameterData
-						.getByAttribute(ProductParameterData.class, "productId", id);
 				for (ProductParameterData productParameterData : productParameterDataList) {
 					if (productParameterData.getProductParameterId().equals(productParameter.getId())) {
 						map.put("productParameterDataId", productParameterData.getId());
@@ -139,7 +142,6 @@ public class ProductController {
 				commonServiceProduct.save(product);
 			flag = "true";
 		}
-
 		map.put("flag", flag);
 		map.put("productId", product.getId());
 		return map;

@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -101,14 +99,14 @@ public class ProductLabelController {
 
 	@RequestMapping("load/delete")
 	@ResponseBody
-	public JSONObject delete(String id) throws JSONException {
-		boolean flag = false;
+	public Map<String, String> delete(String id) {
+		String flag = "false";
 		if (!id.equals("")) {
 			commonServiceProductLabel.deleteById(ProductLabel.class, id);
-			flag = true;
+			flag = "true";
 		}
-		JSONObject obj = new JSONObject();
-		obj.put("flag", flag);
-		return obj;
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("flag", flag);
+		return map;
 	}
 }

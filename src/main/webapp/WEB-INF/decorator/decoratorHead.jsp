@@ -1,41 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../../common.jsp"%>
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
-<!-- <html> -->
-<!-- <head> -->
-
 <style type="text/css">
-.biaotou {
-	text-align: center;
-	letter-spacing: normal;
-	vertical-align: middle;
-	word-spacing: normal;
-	white-space: normal;
-	font-family: Tahoma, Geneva, sans-serif;
-	font-weight: 600;
-	color: #666;
-	font-size: 20px;
-	line-height: 10px;
-}
-
-.title {
-    position: static;
-     width: 100%;
-    height: 70px;
-}
-.title-word{
-    position: absolute;
-    left: 26px;
-    top: 20px;
-}
-.div-head{
-    position: absolute;
-    left: 180px;
-     top: 0px; 
-    width: 78%;
-    height: 38px;
-}
-
 </style>
 
 <!-- </head> -->
@@ -58,15 +23,15 @@
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
-	            <li><a href="#">Dashboard</a></li>
-	            <li><a href="#">Settings</a></li>
+<!-- 	            <li><a href="#">Dashboard</a></li> -->
+	            <li><a href="${contextPath}/main/list.do">商店主页</a></li>
 	            <li>
 		            	<a  class="" data-toggle="modal" data-target="#adModal" href="#">
 <!-- 							登录/注册 -->
 							管理员，你好！
 					</a>
 				</li>
-	            <li><a href="#">Help</a></li>
+<!-- 	            <li><a href="#">Help</a></li> -->
 	          </ul>
 	          <form class="navbar-form navbar-right">
 	            <input type="text" class="form-control" placeholder="Search...">

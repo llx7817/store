@@ -10,13 +10,22 @@
 <body>
 <div class="main-body-position">
 		<div class="container-position">
-				<div class="mydiv gray-background" >
-				<c:if test="${empty item.id }">
-	        		添加新商品
-	        	</c:if>
-	        	<c:if test="${not empty item.id }">
-	        		编辑商品
-	        	</c:if></div> 
+		<h4 class="my-list-header">
+			<c:if test="${empty item.id }">
+	        	添加新商品
+        	</c:if>
+        	<c:if test="${not empty item.id }">
+        		编辑商品
+        	</c:if>
+		</h4>
+<!-- 				<div class="mydiv gray-background" > -->
+<%-- 					<c:if test="${empty item.id }"> --%>
+<!-- 		        		添加新商品 -->
+<%-- 		        	</c:if> --%>
+<%-- 		        	<c:if test="${not empty item.id }"> --%>
+<!-- 		        		编辑商品 -->
+<%-- 		        	</c:if> --%>
+<!-- 	        	</div>  -->
 				<br>
 <form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/product/load/save.do"
 					commandName="item" methodParam="post">
@@ -39,8 +48,8 @@
 								  	<form:hidden path="productImgIds" />
 <!-- 								  用来存放item   -->
 								<ul class="list-inline">
-								  <li><div id="filePicker">选择图片</div>
-								  		  <div id="thelist" class="uploader-list " >
+								  <li><div id="filePickerProductImgIds">选择图片</div>
+								  		  <div id="thelistProductImgIds" class="uploader-list">
 <!-- 								  		  图片的位置 -->
 								  		  </div>  
 <!-- 								     <div id="filename" ></div> -->
@@ -53,13 +62,11 @@
 						</ul>
 
 						<div class="input-title-position">
-							  <label for="product_name " ><strong   class="label-name">商品分类</strong></label>
-							  <div class="my-no-br-right" >
-							  			       		<form:select class="form-control " style="width:280px;"  path="productCategory.id" items="${productCategoryList }" itemLabel="name" itemValue="id">
-<%-- 							  			       		 <form:option value="">Please select</form:option>   --%>
-							  			       		 </form:select>
-<%-- 							  		 <form:textarea  class="form-control textarea-size" path="tyuyi"  /> --%>
-							  </div>
+									  <label for="product_name " ><strong   class="label-name">商品分类</strong></label>
+									  <div class="my-no-br-right" >
+									  			       		<form:select class="form-control " style="width:280px;"  path="productCategory.id" items="${productCategoryList }" itemLabel="name" itemValue="id">
+									  			       		 </form:select>
+									  </div>
 						</div> 	
 						<div class="input-title-position">
 							  <label for="product_name " ><strong   class="label-name">商品标签</strong></label>
@@ -67,12 +74,35 @@
 							  	<form:select class="form-control " style="width:280px;"  path="productLabel.id" items="${productLabelList }" itemLabel="name" itemValue="id"></form:select>
 							  </div>
 						</div> 	
-						<div class="input-title-position">
-							  <label for="product_name " ><strong   class="label-name">以下是商品参数</strong></label>
-							  <div class="my-no-br-right" >
-<%-- 							  	<form:select class="form-control " style="width:280px;"  path="productLabel.id" items="${productParameterList }" itemLabel="name" itemValue="id"></form:select> --%>
-							  </div>
-						</div> 
+						
+							<ul class="list-inline">
+							<li>
+									<div class="input-title-position">
+									<strong   class="">以下是商品参数</strong>
+								</div> 
+							</li>
+							<li style=" position: relative; left: 41%;">
+								<!-- 						图片上传 -->
+							<div class="input-title-position">
+									  <span class="thick label-name">详细介绍</span>
+									 	<form:hidden path="detailIds" /><!--引号里面不要有空格 -->
+									  <div class="my-no-br-right" >
+	<!-- 								  用来存放item   -->
+										<ul class="list-inline">
+										  <li><div id="filePickerDetailIds">选择图片</div>
+										  		  <div id="thelistDetailIds" class="uploader-list" >
+		<!-- 								  		  图片的位置 -->
+										  		  </div>  
+		<!-- 								     <div id="filename" ></div> -->
+										   </li>
+										</ul>
+									</div>
+								
+							</div> 
+							</li>
+						</ul>
+						
+				
 						<div id="productParameterLists">
 							<c:forEach var="itemData" items="${productParameterList}" varStatus="status">	
 <%-- 								<c:if test="${item.type eq 'a' }"> --%>
