@@ -1,25 +1,27 @@
-var loginUrl =contextPath + "/manager/user/login.do";
 
-$(document).on("click",".loginBtn",function(){
-	debugger
-	 $("#message").html("");
-	var inputAccountNumber=$("#inputAccountNumber").val();
-	var inputPassword=$("#inputPassword").val();
-	var param={
-			accountNumber:inputAccountNumber,
-			password:inputPassword
-	}
-	 $.post(loginUrl,param,function(result){
-		 if(result.flag=="success"){
-			 $('#myModal').modal('hide');//隐藏登录框
-		     $("#login").html("欢迎你！ "+result.value);
-		 }else if(result.flag=="wrong"){
-			 $("#message").html(result.value);
-		 }
-			 
-	    });
-//       window.location.href= loginUrl;
-});
+
+//var loginUrl =contextPath + "/manager/user/login.do";
+//
+//$(document).on("click",".loginBtn",function(){
+//	debugger
+//	 $("#message").html("");
+//	var inputAccountNumber=$("#inputAccountNumber").val();
+//	var inputPassword=$("#inputPassword").val();
+//	var param={
+//			accountNumber:inputAccountNumber,
+//			password:inputPassword
+//	}
+//	 $.post(loginUrl,param,function(result){
+//		 if(result.flag=="success"){
+//			 $('#myModal').modal('hide');//隐藏登录框
+//		     $("#login").html("欢迎你！ "+result.value);
+//		 }else if(result.flag=="wrong"){
+//			 $("#message").html(result.value);
+//		 }
+//			 
+//	    });
+////       window.location.href= loginUrl;
+//});
 
 var downloadUrl=contextPath+"/file/downloadFromDataBase.do";
 var detailIds=$('#detailIds').val();
@@ -28,9 +30,9 @@ detailList=detailIds.split(',');//转成数组
 for(var i=0;i<detailList.length;i++){
 	var imgDownloadUrl=downloadUrl+'?id='+detailList[i];
 	$("#detailImgs").append(
-	'<div class="file-item thumbnail upload-state-done" imgid="' + detailList[i]+'"  style="">'+
-	'<div style=""><a  href="'+imgDownloadUrl+'&download=true" ><img src="'+
-	imgDownloadUrl+	'&download=false" alt="图片无法显示"/>	</a></div></div>');
+	'<div class="" imgid="' + detailList[i]+'"  >'+
+	'<a  href="'+imgDownloadUrl+'&download=true" ><img src="'+imgDownloadUrl+
+	'&download=false" class="img-adaptive" alt="图片无法显示"/>	</a></div>');
 }
 
 //introductionImgs

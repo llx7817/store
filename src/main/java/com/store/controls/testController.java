@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.store.entity.Product;
 import com.store.entity.ProductParameter;
 import com.store.entity.ProductParameterData;
-import com.store.entity.User;
 import com.store.services.CommonService;
 
 @Controller
-@RequestMapping("/introduction/")
-public class IntroductionController {
+@RequestMapping("/test/")
+public class testController {
 	@Autowired
 	private CommonService<Product, String> commonService;
 	@Autowired
@@ -27,9 +26,10 @@ public class IntroductionController {
 	private CommonService<ProductParameter, String> commonServiceProductParameter;
 
 	// 产品详情页
-	@RequestMapping("item")
+	@RequestMapping("22")
 	public String item(Model model, String id) {
 		Product item = new Product();
+		id = "4028d8816130e935016131196e770001";
 		item = (Product) commonService.get(Product.class, id);
 		List<ProductParameter> productParameterList = commonServiceProductParameter.getAll(ProductParameter.class);
 		List<ProductParameterData> productParameterDataList = commonServiceProductParameterData
@@ -49,13 +49,10 @@ public class IntroductionController {
 			}
 			productParameterMapList.add(map);
 		}
-		User user = new User();
-//		DataUtil
 		model.addAttribute("item", item);
-		model.addAttribute("user", user);
 		model.addAttribute("productParameterList", productParameterMapList);
 		// model.addAttribute("introductionImgIds", introductionImgIds);
-		return "main/introduction/list";
+		return "test/test";
 	}
 
 }

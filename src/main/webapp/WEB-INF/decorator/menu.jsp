@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- <%@ include file="../../common.jsp"%> --%>
-	<div class="container" style="margin-left: 0px;width: 20%; margin-top: 60px;">
+	<div class="container" style="margin-left: 0px;width: 20%; margin-top: 102px;">
 		<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
 			<div class="panel-heading">

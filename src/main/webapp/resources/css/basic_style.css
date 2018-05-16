@@ -232,3 +232,57 @@ z-index:1;
     /* margin: 40px 0 20px; */
     border-bottom: 1px solid #ddd;
 }
+
+/* 分割线 */
+.horizontal-line{
+	width: 100%;
+    height: auto;
+/*     margin: 0px auto; */
+    border-top: 1px solid #aaa;
+    margin-top: 24px;
+    margin-bottom: 17px;
+}
+/* div+css使得图片自适应大小 */
+.img-adaptive{
+	width: 100%;
+    height: 100%;
+}
+/* 顶部固定 ，没用上*/
+.top-fixed{
+	position: fixed;
+    z-index:1;  /*关键*/
+    top:0;
+}
+.blank-container{
+	margin-top: 23px;
+}
+/* 浮动在右 */
+.fr{
+	 float: right;
+}
+/* 浮动在左 */
+.fl{
+	 float: left;
+}
+.mr20 {
+    margin-right: 20px;
+}
+/*  li{list-style:none;} */
+ ol, ul {
+    list-style: none;
+    list-style-type: none;
+}
+/* 加入购物车按钮 */
+.mycart {
+    float: right;
+    width: 118px;
+    text-align: center;
+    height: 39px;
+    /* overflow: hidden; */
+    /* white-space: nowrap; */
+    background: #df1738;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 3px;
+    line-height: 40px;
+}

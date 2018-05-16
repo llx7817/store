@@ -42,5 +42,7 @@
 	    <jsp:include page="menu.jsp"/>
 
 		<sitemesh:write property='body'/>
+		
+		
 <!-- </body> -->
 <!-- </html> -->
