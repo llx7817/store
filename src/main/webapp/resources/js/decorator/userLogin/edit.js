@@ -1,7 +1,7 @@
-var uploadToFileUrl=contextPath + "/file/uploadToDataBase.do";
-var downloadUrl=contextPath+"/file/downloadFromDataBase.do";
+var uploadToFileUrl=contextPath + "/file/uploadToDataBase";
+var downloadUrl=contextPath+"/file/downloadFromDataBase";
 //var listUrl =contextPath + "/manager/user/list.do";
-var saveUrl =contextPath + "/manager/user/load/save.do";
+var saveUrl =contextPath + "/manager/user/load/save";
 //后台传过来的图片id字符串
 var olduserIconId=$('#userIconId').val();
 //新图片ID数组

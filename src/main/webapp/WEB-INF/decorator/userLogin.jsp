@@ -4,7 +4,7 @@
 <div class="modal fade" id="registerModal" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog"  style="width: 620px;">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header" style="    text-align: center;">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
@@ -12,12 +12,13 @@
 				新用户注册
 				</h4>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" style="margin-left: 45px;    margin-right: 80px;">
 <!-- 			    <div class="container"> -->
-<%-- 			    <form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/user/load/save.do" --%>
+<%-- 			    <form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/user/load/save" --%>
 				<form:form id="editForm"  class="editForm"  method="post"  					
 					commandName="user" methodParam="post">
 					<form:hidden path="id" />
+					<form:hidden path="label"  value="user" /> 
 						<br>
 						<ul class="list-inline">
 						<li>
@@ -82,8 +83,8 @@
 						 <br>
 				        <br><br>
 				       <div class=" text-center">
-							<button type="button" class="btn btn-primary savebtn" >注册</button>
-							<button type="reset" class="btn btn-primary cancelbtn">取消</button>
+							<button type="button" class="btn btn-primary mr20 savebtn" >注册</button>
+							<button type="reset" class="btn btn-primary ml20 cancelbtn">取消</button>
 						</div>
 						<br>
 				      </form:form>
@@ -125,7 +126,7 @@
 						</a>
 			          </label>
 			        </div>
-			        <button class="btn btn-lg btn-primary btn-block loginBtn"   >登录</button>
+			        <span class="btn btn-lg btn-primary btn-block loginBtn"   >登录</span]>
 			      </form>
 			</div>
 		</div><!-- /.modal-content -->

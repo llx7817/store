@@ -1,6 +1,6 @@
-var uploadToFileUrl=contextPath + "/file/uploadToDataBase.do";
-var downloadUrl=contextPath+"/file/downloadFromDataBase.do";
-var deleteUrl =contextPath + "/manager/picture/load/delete.do";
+var uploadToFileUrl=contextPath + "/file/uploadToDataBase";
+var downloadUrl=contextPath+"/file/downloadFromDataBase";
+var deleteUrl =contextPath + "/manager/picture/load/delete";
 
 uploadToFileUrl+="?sign=lunBo";
 debugger

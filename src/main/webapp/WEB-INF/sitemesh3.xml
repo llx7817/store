@@ -19,7 +19,7 @@
  		<mapping path="/manager/*" decorator="/WEB-INF/decorator/decoratorHead.jsp"/> 
  		<mapping path="/main/*" decorator="/WEB-INF/decorator/decoratorHeadMain.jsp"/> 
  		<mapping path="/introduction/*" decorator="/WEB-INF/decorator/decoratorHeadMain.jsp"/> 
- 		<mapping path="/user/*" decorator="/WEB-INF/decorator/decoratorHeadMain.jsp"/> 
+ 		<mapping path="/user/*" decorator="/WEB-INF/decorator/decoratorHeadMainTop.jsp"/> 
 
 <!--  		自定义 tag 规则 -->
 <!--  		<content-processor> -->

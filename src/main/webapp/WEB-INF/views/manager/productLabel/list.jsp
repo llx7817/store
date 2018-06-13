@@ -14,7 +14,7 @@
 <!-- 				<div class="mydiv gray-background" >商品标签列表</div>  -->
 				<br>
 				<!-- 					这是列表 -->
-				<table id="myTable" class="table table-bordered table-striped table-hover"></table> 
+				<table id="myTable" class="table table-striped table-bordered table-hover table-text-center"></table> 
 		</div>
 	</div>
 		<!-- 按钮触发模态框 -->

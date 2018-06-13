@@ -19,12 +19,15 @@ public class MainController {
 	@Autowired
 	private CommonService<BaseFile, String> commonServiceBaseFile;
 	@Autowired
+	private CommonService<User, String> commonServiceUser;
+	@Autowired
 	private CommonService commonService;
 
 	// 主页面
 	@RequestMapping("list")
-	public String list(Model model, Product product, User user) {
+	public String list(Model model, String userId) {
 		List<BaseFile> baseFileList = commonServiceBaseFile.getByAttribute(BaseFile.class, "path", "lunBo");// 获取标记为lunBo的图片
+		BaseFile baseFile_First = baseFileList.get(0);
 		List<Product> productList = commonService.getAll(Product.class);
 		List<Product> productList2 = new ArrayList<Product>();
 		int size = 6;
@@ -34,8 +37,15 @@ public class MainController {
 		for (int i = 0; i < size; i++) {
 			productList2.add(productList.get(i));
 		}
-		model.addAttribute("item", user);
+		baseFileList.remove(0);
+		User user = new User();
+		user.setId("0");
+		if (userId != null && !userId.isEmpty()) {
+			user = commonServiceUser.get(User.class, userId);
+		}
+		model.addAttribute("user", user);
 		model.addAttribute("baseFileList", baseFileList);
+		model.addAttribute("baseFile_First", baseFile_First);
 		model.addAttribute("productList", productList2);
 		return "main/list";
 	}

@@ -1,9 +1,9 @@
-//var uploadToFileUrl=contextPath + "/file/uploadToFile.do";
-//var downloadUrl=contextPath+"/file/download.do";
-var uploadToFileUrl=contextPath + "/file/uploadToDataBase.do";
-var downloadUrl=contextPath+"/file/downloadFromDataBase.do";
-var editUrl =contextPath + "/manager/product/edit.do";
-var saveProductParameterDataUrl =contextPath + "/manager/product/load/saveProductParameterData.do";
+//var uploadToFileUrl=contextPath + "/file/uploadToFile";
+//var downloadUrl=contextPath+"/file/download";
+var uploadToFileUrl=contextPath + "/file/uploadToDataBase";
+var downloadUrl=contextPath+"/file/downloadFromDataBase";
+var editUrl =contextPath + "/manager/product/edit";
+var saveProductParameterDataUrl =contextPath + "/manager/product/load/saveProductParameterData";
 //后台传过来的图片id字符串
 var oldProductImgIds=$('#productImgIds').val();
 var oldDetailIds=$('#detailIds').val();

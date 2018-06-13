@@ -1,8 +1,8 @@
-//var delUrl =contextPath + "/manager/productCategory/load/delete.do";
-var saveUrl =contextPath + "/manager/productCategory/load/save.do";
-//var editUrl =contextPath + "/manager/productCategory/edit.do";
-var listUrl =contextPath + "/manager/productCategory/list.do";
-var treeUrl =contextPath + "/tree/load/category.do";
+//var delUrl =contextPath + "/manager/productCategory/load/delete";
+var saveUrl =contextPath + "/manager/productCategory/load/save";
+//var editUrl =contextPath + "/manager/productCategory/edit";
+var listUrl =contextPath + "/manager/productCategory/list";
+var treeUrl =contextPath + "/tree/load/category";
 
 //var item=$("#item").val();
 //if(typeof item.parentProductCategoryId !='undefined' && value != null&& value != ""){
@@ -11,7 +11,7 @@ var treeUrl =contextPath + "/tree/load/category.do";
 
 $("#tree").tree({  
 	 url:treeUrl,  
-	 method: 'GET',  
+	 method: 'POST',  
 	 animate: true,  
 	 checkbox: true,  
 	 cascadeCheck:false,//层叠选中  

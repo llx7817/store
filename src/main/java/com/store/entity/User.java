@@ -24,7 +24,7 @@ public class User extends BaseEntity implements Serializable {
 	private String password;
 
 	/**
-	 * 真实姓名
+	 * 真实姓名 数据库已删，先不用吧
 	 */
 	private String value;
 
@@ -44,9 +44,9 @@ public class User extends BaseEntity implements Serializable {
 	private String email;
 
 	/**
-	 * 说明
+	 * 标记是否管理员
 	 */
-	private String notes;
+	private String label;
 
 	/**
 	 * 用户头像
@@ -85,12 +85,12 @@ public class User extends BaseEntity implements Serializable {
 		this.email = email;
 	}
 
-	public String getNotes() {
-		return notes;
+	public String getLabel() {
+		return label;
 	}
 
-	public void setNotes(String notes) {
-		this.notes = notes;
+	public void setLabel(String label) {
+		this.label = label;
 	}
 
 	public String getValue() {

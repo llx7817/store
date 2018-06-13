@@ -1,23 +1,24 @@
 //var ClassName=""
-var searchUrl =contextPath + "/manager/productCategory/load/search.do";
-var delUrl =contextPath + "/manager/productCategory/load/delete.do";
-var saveUrl =contextPath + "/manager/productCategory/load/save.do";
-var editUrl =contextPath + "/manager/productCategory/edit.do";
-var listUrl =contextPath + "/manager/productCategory/list.do";
-var editRelationUrl=contextPath + "/manager/productCategory/editRelation.do";
+var searchUrl =contextPath + "/manager/productCategory/load/search";
+var delUrl =contextPath + "/manager/productCategory/load/delete";
+var saveUrl =contextPath + "/manager/productCategory/load/save";
+var editUrl =contextPath + "/manager/productCategory/edit";
+var listUrl =contextPath + "/manager/productCategory/list";
+var editRelationUrl=contextPath + "/manager/productCategory/editRelation";
 $(document).ready(function(){
 	//配置DataTables默认参数
-    $.extend(true, $.fn.dataTable.defaults, {
-        "dom": "l<'#toolbar'>frtip"
-    });
+	
+//    $.extend(true, $.fn.dataTable.defaults, {
+//        "dom": "l<'#toolbar'>frtip"
+//    });
     $('#myTable').DataTable({
     	iDisplayLength: 10,	
-    	bFilter : false, //去掉搜索框
+    	bFilter : true, //搜索框
     	bStateSave:true,
     	bDestroy:true,
         bSort: false,//排序功能
         bAutoWidth:false,
-        serverSide: true,
+//        serverSide: true,
         language: {  
             "sProcessing": "处理中...",  
             "sLengthMenu": "显示 _MENU_ 项结果",  
@@ -26,7 +27,7 @@ $(document).ready(function(){
             "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",  
             "sInfoFiltered": "(由 _MAX_ 项结果过滤)",  
             "sInfoPostFix": "",  
-            "sSearch": "搜索:",  
+            "sSearch": "快速搜索:",  
             "sUrl": "",  
             "sEmptyTable": "表中数据为空",  
             "sLoadingRecords": "载入中...",  
@@ -42,15 +43,15 @@ $(document).ready(function(){
                 "sSortDescending": ": 以降序排列此列"  
             }  
         } ,
-        initComplete: function () {
+//        initComplete: function () {
             //表格加载完毕，手动添加按钮到表格上
 //            $("#toolbar").css("width", "100px").css("display", "inline").css("margin-left", "10px");
 //            $("#toolbar").append("我有问题");
 //            $("#toolbar").append("DIY");
 //            $("#toolbar").append("查看已解决问题");
-        	var str='<button type="button" myid="" class="btn  btn-primary editbtn" data-toggle="modal"'+
-    		' data-target="#myModalEdit" style=" float: right;">新增</button>';
-            $("#toolbar").html(str);
+//        	var str='<button type="button" myid="" class="btn  btn-primary editbtn ml20" data-toggle="modal"'+
+//    		' data-target="#myModalEdit" style=" float: right;">新增</button>';
+//            $("#toolbar").html(str);
 
 //            //加载已经关闭的问题
 //            $(".closedIssue").clickToggle(function () {
@@ -68,24 +69,30 @@ $(document).ready(function(){
 //                $("#issueTableCode").modal("show");
 //                $("#issueTableCodeContent").html($("#issueTableScript").html());
 //            });
-        },
-        aoColumns: [{					//设置自定义列
-            title: "<input type='checkbox' value='option1' name='b' id='selectAll'>",
-            sWidth: '10px',
-            mData: 'id',
-            mRender: function (value) {
-                return "<input type='checkbox' value='" + value + "' name='ids' style='margin-left: 8px;'>";
-            }
-        },{
+//        },
+        aoColumns: [
+//        	{					//设置自定义列
+//            title: "<input type='checkbox' value='option1' name='b' id='selectAll'>",
+//            sWidth: '10px',
+//            mData: 'id',
+//            mRender: function (value) {
+//                return "<input type='checkbox' value='" + value + "' name='ids' style='margin-left: 8px;'>";
+//            }
+//        },
+        	  {
+        		  sTitle: '序号',
+        		  sWidth:'50px',
+        		  "data": null ,//此列不绑定数据源，用来显示序号'
+        		  "targets": 0
+      	},{
 			sTitle: '名称',
-			sWidth:'100px',
+			sWidth:'200px',
 			mData: 'name'
         },{
 			sTitle: '上一级',
-			sWidth:'100px',
+			sWidth:'200px',
 			mData: 'parentProductCategory'
 			,mRender: function (value,f,row,rowcols) {
-				debugger
 		           	 var myValue=" ";
 		           	 if(typeof value !='undefined' && value != null&& value != ""){
 		           		 myValue=value.name;
@@ -95,7 +102,7 @@ $(document).ready(function(){
 		}, {
             title: '操作',
             mData: 'id',
-            sWidth:'250px',
+            sWidth:'200px',
             mRender: function (value) {
 //            	var json = {
 //            			"编辑":{
@@ -115,9 +122,14 @@ $(document).ready(function(){
             	 return string;
             }  
         }],
-        bServerSide: true,
+//        bServerSide: true,
         sAjaxSource: searchUrl,
         sAjaxDataProp: 'rows',
+//      利用行回调函数在表格的第一列显示序号
+        fnRowCallback : function(nRow, aData, iDisplayIndex){  
+            jQuery("td:first", nRow).html(iDisplayIndex +1);  
+              return nRow;  
+           }, 
         fnServerData: function (sSource, aoData, fnCallback) {//查询
 //        	debugger
         	var type="";
@@ -147,7 +159,12 @@ $(document).ready(function(){
         },
 
     });
-  } );
+    //在搜索框后面追加新增按钮
+    var str='<span><button type="button" myid="" class="btn  btn-primary editbtn ml20" data-toggle="modal"'+
+    ' data-target="#myModalEdit" style=" float: right;">新增</button></span>';
+    $("#myTable_filter").find("label").append( str);
+    
+  });
 
 
 

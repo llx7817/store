@@ -1,21 +1,23 @@
 //var ClassName=""
-var searchUrl =contextPath + "/manager/user/load/search.do";
-var delUrl =contextPath + "/manager/user/load/delete.do";
-var editUrl =contextPath + "/manager/user/edit.do";
-//var listUrl =contextPath + "/manager/user/list.do";
+var searchUrl =contextPath + "/manager/user/load/search";
+var delUrl =contextPath + "/manager/user/load/delete";
+var editUrl =contextPath + "/manager/user/edit";
+var orderlistUrl =contextPath + "/manager/user/orderList";
+
+//var listUrl =contextPath + "/manager/user/list";
 $(document).ready(function(){
 	//配置DataTables默认参数
-    $.extend(true, $.fn.dataTable.defaults, {
-        "dom": "l<'#toolbar'>frtip"
-    });
+//    $.extend(true, $.fn.dataTable.defaults, {
+//        "dom": "l<'#toolbar'>frtip"
+//    });
     $('#myTable').DataTable({
     	iDisplayLength: 10,	
-    	bFilter : false, //去掉搜索框
+    	bFilter : true, //去掉搜索框
     	bStateSave:true,
     	bDestroy:true,
         bSort: false,//排序功能
         bAutoWidth:false,
-        serverSide: true,
+//        serverSide: true,
         language: {  
             "sProcessing": "处理中...",  
             "sLengthMenu": "显示 _MENU_ 项结果",  
@@ -24,7 +26,7 @@ $(document).ready(function(){
             "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",  
             "sInfoFiltered": "(由 _MAX_ 项结果过滤)",  
             "sInfoPostFix": "",  
-            "sSearch": "搜索:",  
+            "sSearch": "快速搜索:",  
             "sUrl": "",  
             "sEmptyTable": "表中数据为空",  
             "sLoadingRecords": "载入中...",  
@@ -40,22 +42,28 @@ $(document).ready(function(){
                 "sSortDescending": ": 以降序排列此列"  
             }  
         } ,
-        initComplete: function () {
+//        initComplete: function () {
             //表格加载完毕，手动添加按钮到表格上
-            $("#toolbar").html( '<button type="button" myid="" class="btn  btn-primary editbtn" '+
-            		' style=" float: right;">新增</button>');
-        } ,
-        aoColumns: [{					//设置自定义列
-            title: "<input type='checkbox' value='option1' name='b' id='selectAll'>",
-            sWidth: '10px',
-            mData: 'id',
-            mRender: function (value) {
-                return "<input type='checkbox' value='" + value + "' name='ids'>";
-            }
-        
-        },{
+//            $("#toolbar").html( '<button type="button" myid="" class="btn  btn-primary editbtn" '+
+//            		' style=" float: right;">新增</button>');
+//        } ,
+        aoColumns: [
+//        	{					//设置自定义列
+//            title: "<input type='checkbox' value='option1' name='b' id='selectAll'>",
+//            sWidth: '10px',
+//            mData: 'id',
+//            mRender: function (value) {
+//                return "<input type='checkbox' value='" + value + "' name='ids'>";
+//            }
+//        },
+        	  {
+        		  sTitle: '序号',
+        		  sWidth:'50px',
+        		  "data": null ,//此列不绑定数据源，用来显示序号'
+        		  "targets": 0
+      	},{
 			sTitle: '账号',
-			sWidth:'100px',
+			sWidth:'200px',
 			mData: 'name'
         },{
 			sTitle: '密码',
@@ -66,13 +74,13 @@ $(document).ready(function(){
 			sWidth:'100px',
 			mData: 'phoneNumber'
 		  },{
-				sTitle: '地址',
-				sWidth:'100px',
+				sTitle: '收货地址',
+				sWidth:'200px',
 				mData: 'address'
 		},{
-			sTitle: '邮件地址',
+			sTitle: '是否管理员',
 			sWidth:'100px',
-			mData: 'email'
+			mData: 'label'
 //				,
 //			mRender: function (value,f,row,rowcols) {
 //           	 var myValue=" ";
@@ -82,7 +90,7 @@ $(document).ready(function(){
 //                return myValue;
 //           }
 		},{
-			sTitle: '添加时间',
+			sTitle: '注册时间',
 			sWidth:'100px',
 			mData: "beginTime"
 //			,mRender: function (value,f,row,rowcols) {
@@ -95,16 +103,22 @@ $(document).ready(function(){
 		}, {
             title: '操作',
             mData: 'id',
-            sWidth:'250px',
+            sWidth:'100px',
             mRender: function (value) {
             	var string= '<button type="button" myid="'+value+'" class="btn btn-link editbtn">编辑</button>'+
+            	 '<button type="button" myid="'+value+'" class="btn btn-link orderlistbtn">订单列表</button>'+
                 '<button type="button" myid="'+value+'" class="btn btn-link deletebtn" data-toggle="modal" data-target="#myModal" >删除</button>';
             	 return string;
             }
         }],
-        bServerSide: true,
+//        bServerSide: true,
         sAjaxSource: searchUrl,
         sAjaxDataProp: 'rows',
+//      利用行回调函数在表格的第一列显示序号
+        fnRowCallback : function(nRow, aData, iDisplayIndex){  
+            jQuery("td:first", nRow).html(iDisplayIndex +1);  
+              return nRow;  
+           }, 
         fnServerData: function (sSource, aoData, fnCallback) {//查询
 //        	debugger
         	var type="";
@@ -163,6 +177,11 @@ $(document).on("click",".deletebtn",function(){//修改成这样的写法
 //			  window.location.href= listUrl;
 			  location.reload([true]);
 		  });
+	});
+
+$(document).on("click",".orderlistbtn",function(){//修改成这样的写法
+		 var id= $(this).attr("myid");
+		 window.location.href= orderlistUrl+"?userid="+id;
 	});
 
 

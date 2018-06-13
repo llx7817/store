@@ -9,104 +9,108 @@
 
 </head>
 <body>
-
+<input id="user"  userid="${user.id}" user_name="${user.name}"  hidden/>
 	<div class="container">
 <!-- 		<div class=""> -->
-			${item.productCategory.name} >  ${item.name}
+<%-- 			${item.productCategory.name} >  ${item.name} --%>
 <!-- 		</div> -->
 		<div class="product_box blank-container">
 		 	<div class="img_preview fl" style="display: inline;">
 		 		<div class="big_img">
-					<img alt="" src="http://img01.51cxg.cn/1509677661368.jpg!352" width="500" height="500" style="display: block;" class="">		 		</div>
-		 		<div class="thumb_img blank-container">
-		 			<div class="thumb_scroll_wp">
-                    <ul class="">
-                            <li class="">
-<!--                                 <a class="cloud-zoom-gallery" href="http://img01.51cxg.cn/1509677660165.jpg" rel="useZoom:'zoom',smallImage:'http://img01.51cxg.cn/1509677660165.jpg!352'"> -->
-                                    <img alt="" src="http://img01.51cxg.cn/1509677660165.jpg!56" width="50" height="50">
-<!--                                 </a> -->
-                            </li>
-                            <li class="">
-                                    <img alt="" src="http://img01.51cxg.cn/1509677660465.jpg!56" width="50" height="50">
-                            </li>
-                            <li class="">
-                                    <img alt="" src="http://img01.51cxg.cn/1509677660905.jpg!56" width="50" height="50">
-                            </li>
-                            <li class="cur">
-                                    <img alt="" src="http://img01.51cxg.cn/1509677661368.jpg!56" width="50" height="50">
-                            </li>
-                    </ul>
-                </div>
-		 		</div>
+		 		<img src="${contextPath}/file/downloadFromDataBase?id=${item.productImgIds}"  alt=""  width="430" height="430" style="display: block;">
+<%-- 					<img alt="" src="${contextPath}/resources/img/test/1.jpg" width="430" height="430" style="display: block;" class="">		 		</div> --%>
 			</div>
-			
-			<div class="fl" style="margin-left: 40px;">
+			</div>
+			<div class="fl" style="">
 <!-- 				<input type="hidden" id="goodsId" value="17630"> -->
 <!-- 	            <input type="hidden" id="productId" value="24508"> -->
 <!-- 	            <input type="hidden" id="brandId" value="1064"> -->
 <!-- 	            <input type="hidden" id="catId" value="5356"> -->
 					<div class="pd_title">
-		                <h2>${item.name}</h2>
-		<!--                 <strong>2罐起订</strong> -->
+		                <h3>${item.name}</h3>
 		            </div>
 <!-- 		              <input type="hidden" id="disId" value="320105000000"> -->
 <!--            			 <input type="hidden" id="followPrice" value="78"> -->
-		            <dl class="pd_info clearfix mt10">
-                <div class="pd-bg clearfix">
-                    <div class="cxyj" style="display:none;">
-                    <dt>原&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</dt>
-                        <dd><del class="f14 col6">78.00</del></dd>
-                    </div>
-                    <dt id="priceflr">促&nbsp;&nbsp;销&nbsp;&nbsp;价：</dt>
-                    <dd><span class="main_price"><span>¥ </span>78.00</span><span style="color: red;" id="zk_price">&nbsp;</span><input type="hidden" id="mprice" value="78.00"></dd>
-                    <dt>促销信息：</dt>
-                    <dd class="product_market "> </dd>
-                </div>
-                <div class="pl20 pr20 pt10">
-                    <dt>配&nbsp;&nbsp;送&nbsp;&nbsp;至：</dt>
-                    <dd>
-                        <div class="choose_area">
-                        
-                        </div><!--/choose_area-->
-                        <div class="store-prompt"><em>有货</em></div>
-                    </dd>
-                    <dt>服&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：</dt>
-                    <dd>由“官方自营店”直接销售和发货，并提供售后服务</dd>
-                    <dt>温馨提示：</dt>
-                    <dd>
-                        <div class="wx_prompt clearfix">
-                                        <img src="http://img01.51cxg.cn/1479975423637.jpg" height="20px;" width="20px;" style="float:left;">
-<!--                                         <a class="fl" target="_blank" href="/help/91">正品保障</a> -->
-                                        正品保障
-                                        <img src="http://img01.51cxg.cn/1479975373828.jpg" height="20px;" width="20px;" style="float:left;">
-<!--                                         <a class="fl" target="_blank" href="/help/91">免运费</a> -->
-                                        免运费
-                        </div><!--/wx_prompt-->
-                    </dd>
-                </div>
-            </dl>
+				<div style="margin-top: 33px; margin-bottom: 36px;">
+					<div class="originalDiv">
+						<span class="text-blank">价&nbsp;&nbsp;格</span>
+						<span >¥</span>
+						<span style="text-decoration: line-through;" >${item.originalPrice}</span>
+					</div>        
+					<div class="promotionDiv">
+						<span class="text-blank" >促销价 </span>
+						<span class="promotionPrice">¥</span>
+						<span class="promotionPrice"  style="font-size: 30px;">${item.promotionPrice}</span>				
+					</div>        
+					<div class="productNumber">
+				<span class="text-blank">数&nbsp;&nbsp;量</span>
+				<span>
+					<span class="productNumberSettingSpan">
+					<input class="productNumberSetting" type="text" value="1" id="product_Number">
+					</span>
+					<span class="arrow">
+						<a href="#" class="increaseNumber">
+						<span class="updown">
+								<img alt="" src="${contextPath}/resources/img/introduction/increase.png"  >
+						</span>
+						</a>
+						<span class="updownMiddle"> </span>
+						<a href="#" class="decreaseNumber">
+						<span class="updown">
+								<img alt="" src="${contextPath}/resources/img/introduction/decrease.png"  >
+						</span>
+						</a>
+						
+					</span>
+					件
+				</span>
+				<span>&nbsp;库存${item.inventory}件</span>
+			</div>
+				<div class="margin-top-16px">
+						<span class="text-blank" >配送至 </span>
+						<span class="">浙江杭州</span>				
+					</div>  
+				<div class="margin-top-16px">
+						<span class="text-blank" >服&nbsp;&nbsp;务 </span>
+						<span class="">由“官方自营店”直接销售和发货，并提供售后服务</span>				
+				</div>  
+				<div class="margin-top-16px">
+						<span class="text-blank" >温馨提示</span>
+						<span class="">
+						<img alt="" src="${contextPath}/resources/img/introduction/mian-yun-fei.jpg"  >
+						<img alt="" src="${contextPath}/resources/img/introduction/zhang-ping-bao-zhang.jpg"  >
+						</span>		免运费&nbsp;&nbsp;正品保障		
+				</div>  
+			</div>  
             <div class="by_cart ">
-                <a class="collect_product mr20" product_id=""distinct_id="320105000000">立即购买</a>
-                <a class="mycart" product_id="" distinct_id="320105000000" href="javascript:;">加入购物车</a>
+                <a class="collect_product ml20" product_id=""distinct_id="320105000000">立即购买</a>
+                <a class="mycart mr20 addCartBtn" product_id="${item.id}"  href="javascript:void(0);">加入购物车</a>
+				<div class="alert alert-warning" >
+					<a href="#" class="close" data-dismiss="alert">
+						&times;
+					</a>
+					宝贝已经加入购物车！
+				</div>
             </div>
 			</div>
 		</div>
 	
 <!-- 			分割线		 -->
 <!-- 			<hr /> -->
+			<h3  style="text-align: center;"   >商品详情</h3>
 			<div class="horizontal-line"></div>
 <!-- 			商品详细介绍，主要是以图片的方式 -->
 			<div class="product_detail">
 <!-- 			商品详情 -->
-				<div class="details_box" style="display: block;">
+				<div class="details_box" style="display: block;margin-left: 86px;">
                         <ul class="product_introduce ">
-                            <li>商品名称：${item.name}</li>
-                            <li>商品标签：${item.productLabel.name}</li>
-                            <li>店铺：<a href="${contextPath}/main/list.do">官方自营店</a></li>
-                            <li>时间：${item.updateTime}</li>
+                            <li title="${item.name}">商品名称：${item.name}</li>
+<%--                             <li>商品标签：${item.productLabel.name}</li> --%>
+<%--                             <li>店铺：<a href="${contextPath}/main/list">官方自营店</a></li> --%>
+<%--                             <li>时间：${item.updateTime}</li> --%>
                             <li>分类：${item.productCategory.name}</li>
                             <c:forEach var="itemData" items="${productParameterList}" varStatus="status">	
-									  	 <li>${itemData.name}：${itemData.value}  </li>	
+									  	 <li title="${itemData.value}">${itemData.name}：${itemData.value}  </li>	
 							</c:forEach>
                         </ul><!--/pro_introduce-->
 				</div>
@@ -118,22 +122,23 @@
 					</div>
 				</div>
 			</div>
-			<div class="slogen">
-			<ul>
-				<li >
-				      <img alt="" src="${contextPath}/resources/img/slogen/1.jpg"  height="50">
-				</li>
-				<li>
-				      <img alt="" src="${contextPath}/resources/img/slogen/2.jpg"  height="50">
-				</li>
-				<li>
-				      <img alt="" src="${contextPath}/resources/img/slogen/3.jpg"  height="50">
-				</li>
-				<li>
-				      <img alt="" src="${contextPath}/resources/img/slogen/4.jpg"  height="50">
-				</li>
-			</ul>
-			</div>
+<!-- 			<div class="horizontal-line"></div> -->
+<!-- 			<div class="slogen"> -->
+<!-- 			<ul> -->
+<!-- 				<li > -->
+<%-- 				      <img alt="" src="${contextPath}/resources/img/slogen/1.jpg"  height="50"> --%>
+<!-- 				</li> -->
+<!-- 				<li> -->
+<%-- 				      <img alt="" src="${contextPath}/resources/img/slogen/2.jpg"  height="50"> --%>
+<!-- 				</li> -->
+<!-- 				<li> -->
+<%-- 				      <img alt="" src="${contextPath}/resources/img/slogen/3.jpg"  height="50"> --%>
+<!-- 				</li> -->
+<!-- 				<li> -->
+<%-- 				      <img alt="" src="${contextPath}/resources/img/slogen/4.jpg"  height="50"> --%>
+<!-- 				</li> -->
+<!-- 			</ul> -->
+<!-- 			</div> -->
 	</div>
 		
 
@@ -155,7 +160,7 @@
 
 /***/
 .product_box {
-    min-height: 700px;
+    min-height: 490px;
     background: #fff;
     padding: 20px;
 }
@@ -185,11 +190,7 @@
     float: left;
     margin: 0 3.5px;
 }
-.slogen li {
-    float: left;
-    width: 262px;
-    margin-right: 20px;
-}
+
 .product_introduce {
 /*     border: 1px solid #eee; */
 /*     border-top: none; */
@@ -198,7 +199,7 @@
 }
 .product_introduce li {
     float: left;
-    width: 250px;
+    width: 268px;
     margin-right: 20px;
     white-space: nowrap;
     overflow: hidden;
@@ -222,14 +223,50 @@
     cursor: pointer;
 }
 
-.slogen {
-    position: relative;
-    height: 54px;
-    padding: 20px 0;
-    margin-bottom: 14px;
-    background: #F5F5F5;
-    text-align: center;
+
+.text-blank{
+	display: inline-block; 
+	width: 68px;
 }
+
+
+div.productNumber span.updown {
+    border: 1px solid #999;
+    display: block;
+    width: 20px;
+    height: 14px;
+    text-align: center;
+    padding-top: 4px;
+}
+ span.productNumberSettingSpan {
+    border: 1px solid #999;
+    display: inline-block;
+    width: 43px;
+    height: 32px;
+    padding: 7px 0;
+}
+input.productNumberSetting {
+    border: 0px;
+    height: 80%;
+    width: 80%;
+}
+div.productNumber span.arrow {
+    display: inline-block;
+    width: 22px;
+    height: 32px;
+    vertical-align: top;
+}
+div.productNumber span.updownMiddle {
+    height: 4px;
+    display: block;
+}
+div.productNumber span.updown img {
+    display: inline-block;
+    vertical-align: top;
+}
+.margin-top-16px{
+    margin-top: 16px;
+ }
 </style>
 
 </body>

@@ -27,4 +27,7 @@ public interface CommonService<T, PK> {
 	// String value);
 
 	public List<T> getByAttribute(Class<T> clazz, String attribute, String value);
+
+	public List<T> getByAttribute(Class<T> clazz, String attribute, String noAttribute, String value,
+			String noAttributeValue, boolean flag);
 }

@@ -25,10 +25,12 @@ public class IntroductionController {
 	private CommonService<ProductParameterData, String> commonServiceProductParameterData;
 	@Autowired
 	private CommonService<ProductParameter, String> commonServiceProductParameter;
+	@Autowired
+	private CommonService<User, String> commonServiceUser;
 
 	// 产品详情页
 	@RequestMapping("item")
-	public String item(Model model, String id) {
+	public String item(Model model, String id, String userId) {
 		Product item = new Product();
 		item = (Product) commonService.get(Product.class, id);
 		List<ProductParameter> productParameterList = commonServiceProductParameter.getAll(ProductParameter.class);
@@ -50,7 +52,10 @@ public class IntroductionController {
 			productParameterMapList.add(map);
 		}
 		User user = new User();
-//		DataUtil
+		if (userId != null && !userId.isEmpty() && !userId.equals("0")) {
+			user = commonServiceUser.get(User.class, userId);
+		}
+		// DataUtil
 		model.addAttribute("item", item);
 		model.addAttribute("user", user);
 		model.addAttribute("productParameterList", productParameterMapList);

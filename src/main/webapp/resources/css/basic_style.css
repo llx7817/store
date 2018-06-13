@@ -26,9 +26,7 @@ body {
 }
 
 
-.juzhong {
-	text-align: center;
-}
+
 .logon_blank {
 	padding-left: 25%;
 }
@@ -73,7 +71,15 @@ body {
 	font-weight: bolder;
 /* 	font-size: 16px; */
 }
-
+/* dataTables列内容居中 */  
+.table-text-center>tbody>tr>td{  
+        text-align:center;  
+}  
+  
+/* dataTables表头居中 */  
+.table-text-center>thead:first-child>tr:first-child>th{  
+        text-align:center;  
+}  
 
 .blank-left {
 	padding-left: 20px;
@@ -170,7 +176,7 @@ label>.label-name{
 }
 .main-body-position {
 position: absolute;
-    left: 19%;
+    left: 21%;
     top: 70px;
     width: 75%;
 }
@@ -189,9 +195,9 @@ position: absolute;
 
 .body-position {
 position: relative;
-    left: 10%;
+    left: 17%;
     top: 10%;
-    width: 75%;
+    width: 67%;
 }
 /* .filePickerBtn {width:100%!important;height:100%!important;}   */
 /* .img-position{ */
@@ -267,6 +273,9 @@ z-index:1;
 .mr20 {
     margin-right: 20px;
 }
+.ml20 {
+    margin-left: 20px;
+}
 /*  li{list-style:none;} */
  ol, ul {
     list-style: none;
@@ -285,4 +294,89 @@ z-index:1;
     font-size: 18px;
     border-radius: 3px;
     line-height: 40px;
+}
+.flow_progress {
+    /* width: 99%; */
+    width: 700px;
+    height: 30px;
+    background: #F8F8F8;
+    margin: 20px 0;
+}
+
+.flow_progress .step1 {
+    background: #FFE6BC url(../img/userCart/step1.gif) no-repeat right center;
+    font-weight: bold;
+    color: #FF6600;
+}
+.flow_progress .step2 {
+    background: url(../img/userCart/step3.gif) no-repeat right center;
+}
+.flow_progress li {
+    display: block;
+    float: left;
+    width: 33%;
+    height: 30px;
+    text-indent: 2em;
+    line-height: 30px;
+    font-size: 14px;
+    color: #999;
+}
+.container {
+    max-width: 1001px;
+}
+.slogen {
+    position: relative;
+    height: 50px;
+/*     padding: 20px 0; */
+/*     margin-bottom: 14px; */
+/*     background: #F5F5F5; */
+    text-align: center;
+}
+.slogen li {
+    float: left;
+    width: 230px;
+/*     margin-right: 20px; */
+}
+/* 促销价格 */
+.promotionPrice{
+    color: #c40000;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+}
+/* 轮播的左右键 */
+.arrow-right {
+    background: url(./img/arrows.png) no-repeat left bottom;
+    position: absolute;
+    right: 23px;
+    top: 50%;
+    margin-top: -15px;
+    width: 17px;
+    height: 30px;
+    z-index: 10;
+}
+.arrow-left {
+    background: url(./img/arrows.png) no-repeat left top;
+    position: absolute;
+    left: 23px;
+    top: 50%;
+    margin-top: -15px;
+    width: 17px;
+    height: 30px;
+    z-index: 10;
+}
+
+.mallSearch-input .searchBtn{
+    background-image: url(./img/search.png);
+    background-repeat: no-repeat;
+    float: right;
+    width: 79px;
+    height: 34px;
+/*     background-position: 0 -62px; */
+    background-color: #c33;
+    border: none;
+}
+
+.text-center {
+	text-align: center;
 }

@@ -26,7 +26,7 @@
 <!-- 	        		编辑用户账号 -->
 <%-- 	        	</c:if></div>  --%>
 				<br>
-<form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/user/load/save.do"
+<form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/user/load/save"
 					commandName="item" methodParam="post">
 					<form:hidden path="id" />
 						<br>
@@ -38,6 +38,27 @@
 								  <form:input path="name"   class="form-control "  size="10"/>
 								  </div>
 						</div> 
+						</li>
+						<li style=" position: relative; left: 30%;">
+							<div class="input-title-position">
+								  <label for="user_name"><span class="thick label-name">是否管理员</span></label>
+								  <div class="my-no-br-right" >
+										<form:select class="form-control " style="width:200px;"  path="label">
+											<option value="user">普通用户</option>
+   											<option value="administrator">管理员</option>
+						  				</form:select>
+								  </div>
+							</div> 
+						</li>
+						</ul>
+						<ul class="list-inline">
+						<li>
+							<div class="input-title-position">
+							  <label for="user_name " ><strong   class="label-name">密码</strong></label>
+							  <div class="my-no-br-right" >
+								  <form:input path="password"   class="form-control "  size="10" type="password"/>
+							  </div>
+							</div> 
 						</li>
 						<li style=" position: relative; left: 30%;">
 							<!-- 						图片上传 -->
@@ -55,16 +76,10 @@
 								   </li>
 								</ul>
 							</div>
-							
 						</div> 
 						</li>
 						</ul>
-						<div class="input-title-position">
-							  <label for="user_name " ><strong   class="label-name">密码</strong></label>
-							  <div class="my-no-br-right" >
-								  <form:input path="password"   class="form-control "  size="10" type="password"/>
-							  </div>
-						</div> 
+					
 						<div class="input-title-position">
 							  <label for="user_name " ><strong   class="label-name">再次输入密码</strong></label>
 							  <div class="my-no-br-right" >

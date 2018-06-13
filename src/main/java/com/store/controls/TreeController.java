@@ -22,7 +22,8 @@ public class TreeController {
 	@Autowired
 	private CommonService<ProductCategory, String> commonServiceProductCategory;
 
-	@RequestMapping(value = "load/category")
+	// 解决传入前端中文出现乱码的问题： produces = "text/html;charset=UTF-8"
+	@RequestMapping(value = "load/category", produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String getTree(Model model, @RequestParam(value = "id", required = false) String id) throws JSONException {
 		// showAllRegion = false;
@@ -63,7 +64,8 @@ public class TreeController {
 		}
 		jsonArray.put(rootObj);
 		model.addAttribute("rootId", rootItem.getId());
-		return jsonArray.toString();
+		String s = jsonArray.toString();
+		return s;
 	}
 
 	private JSONArray getChildTree(List<ProductCategory> items, String id) throws JSONException {

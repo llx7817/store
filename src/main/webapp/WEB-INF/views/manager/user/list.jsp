@@ -14,7 +14,7 @@
 				<h4 class="my-list-header">用户列表</h4>
 				<br>
 				<!-- 					这是列表 -->
-				<table id="myTable" class="table table-bordered table-striped table-hover"></table> 
+				<table id="myTable" class="table table-bordered table-striped table-text-center"></table> 
 		</div>
 	</div>
 		<!-- 按钮触发模态框 -->

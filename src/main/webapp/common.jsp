@@ -12,19 +12,19 @@
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/basic_style.css"/>
 <%-- <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/style.css"/> --%>
 <link type="text/css" rel="stylesheet" href="${contextPath}/resources/js/lib/bootstrap3/css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/lunBo.css"/>
+<%-- <link type="text/css" rel="stylesheet" href="${contextPath}/resources/css/lunBo.css"/> --%>
 
-<link type="text/css" rel="stylesheet" href="${contextPath}/resources/js/lib/bootstrap3/css/bootstrap-theme.min.css">
+<%-- <link type="text/css" rel="stylesheet" href="${contextPath}/resources/js/lib/bootstrap3/css/bootstrap-theme.min.css"> --%>
 <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/webuploader/webuploader.css"/>  
-<link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/DataTables-1.10.15/media/css/jquery.dataTables.min.css"/>  
+<%-- <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/DataTables-1.10.15/media/css/jquery.dataTables.css"/>   --%>
 <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/DataTables-1.10.15/media/css/dataTables.bootstrap.min.css"/>  
-<link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/jquery-easyui-1.5.4/themes/default/easyui.css"/>  
-<link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/jquery-easyui-1.5.4/themes/icon.css"/>  
+<%-- <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/jquery-easyui-1.5.4/themes/default/easyui.css"/>   --%>
+<%-- <link type="text/css" rel="stylesheet" href="${contextPath }/resources/js/lib/jquery-easyui-1.5.4/themes/icon.css"/>   --%>
 
 
 <%-- <script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-1.8.2.min.js"></script> --%>
-<%-- <script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-1.11.2.min.js"></script> --%>
-<script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-1.11.2.min.js"></script>
+<%-- <script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-3.2.1.min.js"></script> --%>
 <!--[if lte IE 9]>
 <script type="text/javascript" src="${contextPath}/resources/js/lib/bootstrap3/js/respond.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/js/lib/bootstrap3/js/html5shiv.min.js"></script>
@@ -37,8 +37,8 @@
 <%-- <script type="text/javascript" src="${contextPath}/resources/js/lib/SpryAssets/SpryTabbedPanels.js"></script> --%>
 <script type="text/javascript" src="${contextPath}/resources/js/lib/DataTables-1.10.15/media/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/js/lib/DataTables-1.10.15/media/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-easyui-1.5.4/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-easyui-1.5.4/locale/easyui-lang-zh_CN.js"></script>
+<%-- <script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-easyui-1.5.4/jquery.easyui.min.js"></script> --%>
+<%-- <script type="text/javascript" src="${contextPath}/resources/js/lib/jquery-easyui-1.5.4/locale/easyui-lang-zh_CN.js"></script> --%>
 
  <script type="text/javascript">
     var contextPath = '${contextPath}';

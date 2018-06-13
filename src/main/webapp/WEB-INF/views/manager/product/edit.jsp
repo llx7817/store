@@ -27,7 +27,7 @@
 <%-- 		        	</c:if> --%>
 <!-- 	        	</div>  -->
 				<br>
-<form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/product/load/save.do"
+<form:form id="editForm"  class="editForm"  method="post"  action="${contextPath}/manager/product/load/save"
 					commandName="item" methodParam="post">
 					<form:hidden path="id" />
 						<br>
@@ -36,11 +36,11 @@
 						<div class="input-title-position">
 								  <label for="product_name"><span class="thick label-name">商品名称</span></label>
 								  <div class="my-no-br-right" >
-								  <form:input path="name"   class="form-control "  size="10"/>
+								  <form:input path="name"   class="form-control "  size="20"/>
 								  </div>
 						</div> 
 						</li>
-						<li style=" position: relative; left: 30%;">
+						<li style=" position: relative; left: 19%; ">
 							<!-- 						图片上传 -->
 						<div class="input-title-position">
 								  <label for="product_ico"><span class="thick label-name">商品图片</span></label>
@@ -60,28 +60,47 @@
 						</div> 
 						</li>
 						</ul>
-
+					<div class="input-title-position">
+									  <label for="product_name " ><strong   class="label-name">商品原价</strong></label>
+									  <div class="my-no-br-right" >
+<%-- 									    	<form:input path="name"   class="form-control "  size="10"/> --%>
+									    	<form:input path="originalPrice"   class="form-control "  size="10"/>
+									    	
+									  </div>
+						</div> 	
+						<div class="input-title-position">
+									  <label for="product_name " ><strong   class="label-name">商品促销价</strong></label>
+									  <div class="my-no-br-right" >
+									    	<form:input path="promotionPrice"   class="form-control "  size="10"/>
+									  </div>
+						</div> 	
+						<div class="input-title-position">
+									  <label for="product_name " ><strong   class="label-name">商品库存</strong></label>
+									  <div class="my-no-br-right" >
+									    	<form:input path="inventory"   class="form-control "  size="10"/>
+									  </div>
+						</div>
 						<div class="input-title-position">
 									  <label for="product_name " ><strong   class="label-name">商品分类</strong></label>
 									  <div class="my-no-br-right" >
-									  			       		<form:select class="form-control " style="width:280px;"  path="productCategory.id" items="${productCategoryList }" itemLabel="name" itemValue="id">
+									  			       		<form:select class="form-control " style="width:200px;"  path="productCategory.id" items="${productCategoryList }" itemLabel="name" itemValue="id">
 									  			       		 </form:select>
 									  </div>
 						</div> 	
 						<div class="input-title-position">
 							  <label for="product_name " ><strong   class="label-name">商品标签</strong></label>
 							  <div class="my-no-br-right" >
-							  	<form:select class="form-control " style="width:280px;"  path="productLabel.id" items="${productLabelList }" itemLabel="name" itemValue="id"></form:select>
+							  	<form:select class="form-control " style="width:200px;"  path="productLabel.id" items="${productLabelList }" itemLabel="name" itemValue="id"></form:select>
 							  </div>
 						</div> 	
 						
 							<ul class="list-inline">
 							<li>
 									<div class="input-title-position">
-									<strong   class="">以下是商品参数</strong>
+									<h4><strong   class="">以下是商品详细参数</strong></h4>
 								</div> 
 							</li>
-							<li style=" position: relative; left: 41%;">
+							<li style=" position: relative; left: 31%;">
 								<!-- 						图片上传 -->
 							<div class="input-title-position">
 									  <span class="thick label-name">详细介绍</span>

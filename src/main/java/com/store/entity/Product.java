@@ -25,13 +25,23 @@ public class Product extends BaseEntity implements Serializable {
 	@Column(name = "name")
 	private String name;
 
-	public String getName() {
-		return name;
-	}
+	/**
+	 * 商品的原价
+	 */
+	// @Column(name = "originalPrice")
+	private double originalPrice;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	/**
+	 * 商品的促销价
+	 */
+	@Column(name = "promotionPrice")
+	private double promotionPrice;
+
+	/**
+	 * 商品的库存
+	 */
+	// @Column(name = "inventory")
+	private int inventory;
 
 	/**
 	 * 产品参数 因为有多个id要存，以,隔开
@@ -118,6 +128,38 @@ public class Product extends BaseEntity implements Serializable {
 
 	public void setDetailIds(String detailIds) {
 		this.detailIds = detailIds;
+	}
+
+	public double getOriginalPrice() {
+		return originalPrice;
+	}
+
+	public void setOriginalPrice(double originalPrice) {
+		this.originalPrice = originalPrice;
+	}
+
+	public double getPromotionPrice() {
+		return promotionPrice;
+	}
+
+	public void setPromotionPrice(double promotionPrice) {
+		this.promotionPrice = promotionPrice;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(int inventory) {
+		this.inventory = inventory;
 	}
 
 	// @OneToMany(cascade = { CascadeType.ALL })

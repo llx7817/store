@@ -89,8 +89,9 @@
 
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
-<!--         <url-pattern>/</url-pattern> -->
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/</url-pattern>
+<!--         .do貌似是struts的习惯吧 -->
+<!--         <url-pattern>*.do</url-pattern> -->
 <!--         <url-pattern>/*</url-pattern> -->
     </servlet-mapping>
 	    <servlet-mapping>  

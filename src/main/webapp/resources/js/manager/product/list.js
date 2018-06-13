@@ -1,17 +1,17 @@
 //var ClassName=""
-var searchUrl =contextPath + "/manager/product/load/search.do";
-var delUrl =contextPath + "/manager/product/load/delete.do";
-var editUrl =contextPath + "/manager/product/edit.do";
-var listUrl =contextPath + "/manager/product/list.do";
+var searchUrl =contextPath + "/manager/product/load/search";
+var delUrl =contextPath + "/manager/product/load/delete";
+var editUrl =contextPath + "/manager/product/edit";
+var listUrl =contextPath + "/manager/product/list";
 $(document).ready(function(){
     $('#myTable').DataTable({
     	iDisplayLength: 10,	
-    	bFilter : false, //去掉搜索框
+    	bFilter : true, //搜索框
     	bStateSave:true,
     	bDestroy:true,
         bSort: false,//排序功能
         bAutoWidth:false,
-        serverSide: true,
+//        serverSide: true,
         language: {  
             "sProcessing": "处理中...",  
             "sLengthMenu": "显示 _MENU_ 项结果",  
@@ -20,7 +20,7 @@ $(document).ready(function(){
             "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",  
             "sInfoFiltered": "(由 _MAX_ 项结果过滤)",  
             "sInfoPostFix": "",  
-            "sSearch": "搜索:",  
+            "sSearch": "快速搜索:",  
             "sUrl": "",  
             "sEmptyTable": "表中数据为空",  
             "sLoadingRecords": "载入中...",  
@@ -36,16 +36,23 @@ $(document).ready(function(){
                 "sSortDescending": ": 以降序排列此列"  
             }  
         } ,
-        aoColumns: [{					//设置自定义列
-            title: "<input type='checkbox' value='option1' name='b' id='selectAll'>",
-            sWidth: '10px',
-            mData: 'id',
-            mRender: function (value) {
-                return "<input type='checkbox' value='" + value + "' name='ids'>";
-            }
-        },{
+        aoColumns: [
+//        	{					//设置自定义列
+//            title: "<input type='checkbox' value='option1' name='b' id='selectAll'>",
+//            sWidth: '10px',
+//            mData: 'id',
+//            mRender: function (value) {
+//                return "<input type='checkbox' value='" + value + "' name='ids'>";
+//            }
+//        },
+        	  {
+        		  sTitle: '序号',
+        		  sWidth:'50px',
+        		  "data": null ,//此列不绑定数据源，用来显示序号'
+        		  "targets": 0
+      	},{
 			sTitle: '名称',
-			sWidth:'100px',
+			sWidth:'250px',
 			mData: 'name'
 		},{
 			sTitle: '标签',
@@ -83,7 +90,7 @@ $(document).ready(function(){
 		}, {
             title: '操作',
             mData: 'id',
-            sWidth:'250px',
+            sWidth:'100px',
             mRender: function (value) {
 //            	var json = {
 //            			"编辑":{
@@ -102,9 +109,14 @@ $(document).ready(function(){
             	 return string;
             }
         }],
-        bServerSide: true,
+//        bServerSide: true,
         sAjaxSource: searchUrl,
         sAjaxDataProp: 'rows',
+//      利用行回调函数在表格的第一列显示序号
+        fnRowCallback : function(nRow, aData, iDisplayIndex){  
+            jQuery("td:first", nRow).html(iDisplayIndex +1);  
+              return nRow;  
+           }, 
         fnServerData: function (sSource, aoData, fnCallback) {//查询
 //        	debugger
         	var type="";

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="../../../../common.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- <!DOCTYPE html> -->
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
+<!DOCTYPE html>
 <html>
 <head>
 <title>Insert title here</title>
@@ -14,7 +14,7 @@
 <!-- 				<div class="mydiv gray-background" >商品类别列表</div>  -->
 				<br>
 				<!-- 					这是列表 -->
-				<table id="myTable" class="table table-bordered table-striped table-hover"></table> 
+				<table id="myTable" class="table table-bordered table-striped table-text-center"></table> 
 		</div>
 	</div>
 		<!-- 按钮触发模态框 -->
@@ -58,5 +58,7 @@
 				</div>
 			</div>
 <script type="text/javascript" src="${contextPath}/resources/js/manager/productCategory/list.js"></script>
+
+
 </body>
 </html>

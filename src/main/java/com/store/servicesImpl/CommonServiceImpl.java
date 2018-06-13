@@ -98,4 +98,24 @@ public class CommonServiceImpl<T, PK extends Serializable> implements CommonServ
 		// }
 		return list;
 	}
+
+	public List<T> getByAttribute(Class<T> clazz, String attribute, String noAttribute, String value,
+			String noAttributeValue, boolean flag) {
+		String sql = "from " + clazz.getSimpleName() + "  ";
+		if (!StringUtils.isEmpty(attribute) && !StringUtils.isEmpty(value) && !StringUtils.isEmpty(noAttribute)) {
+			sql += " where " + attribute + "=?   and  " + noAttribute;
+			if (flag == true) {
+				sql += " = '" + noAttributeValue + "' ";// 有排除这个值的数据
+			} else {
+				sql += " <> '" + noAttributeValue + "' ";
+			}
+		}
+
+		List<T> list = (List<T>) baseDao.find(sql, value);
+		// T object = null;
+		// if (list.size() != 0) {
+		// object = list.get(0);
+		// }
+		return list;
+	}
 }

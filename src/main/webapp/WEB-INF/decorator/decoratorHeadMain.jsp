@@ -16,23 +16,17 @@
 .headerTop {
     line-height: 40px;
     float: right;
-    margin-right: 50px;
+/*     margin-right: 50px; */
 }
 
 
-.gouWuChe{
-    /* position: absolute; */
-    /* top: 70px; */
-    /* top: 62px; */
-    /* right: 120px; */
-/*     bottom: auto; */
-    /* left: auto; */
-     float: right;
-    border: 2px solid #c33;
-    width: 124px;
-    height: 39px;
-    font-size: large;
-}
+/* .gouWuChe{ */
+/*      float: right; */
+/*     border: 2px solid #c33; */
+/*     width: 124px; */
+/*     height: 39px; */
+/*     font-size: large; */
+/* } */
 
 .mallSearch-input{
     float: right;
@@ -50,25 +44,24 @@
 </style>
     
 <div  class="headerTopAreaBox-fixed">
+	<div class="container">
 		<div class="headerTop">
 				<div style=""> 欢迎光临！&nbsp;
-<!-- 						<span id="loginText"> -->
 						<a  class="" data-toggle="modal" data-target="#myModal" href="#" id="login">
-						<span id="userName">登录&nbsp;|&nbsp;注册</span></a>
-						  	<input id="userId" hidden/>
-<!-- 						<a  class="" data-toggle="modal" data-target="#myModal" href="#" id="login">登录&nbsp;|&nbsp;注册</a> -->
-<!-- 						</span> -->
-						<a href="#order" rel="" class=""  id="orderForm"> &nbsp;&nbsp;我的订单</a>
+						<span id="userName" userid="">登录&nbsp;|&nbsp;注册</span></a>
+<!-- 						<span id="userName">登录&nbsp;|&nbsp;注册</span></a> -->
+							<input id="userId" value="0" hidden/>						
+							<a  href="javascript:void(0)"  class=""  id="userForm"> &nbsp;&nbsp;我的订单</a>
 				</div>
-				
+			</div>
 		</div>
 </div>
+<%--  <jsp:include page="decoratorHeadMainTop.jsp"/> --%>
 
-
-<div class="">
+<!-- <div class=""> -->
 	<div class="container blank-container" >
 	<!-- 	购物车 -->
-	 <a class="mycart" user_id=""  id="userCart">购物车</a>
+	 <a class="mycart"  id="userCart" href="javascript:void(0)">购物车</a>
 <!-- 		<div class="gouWuChe"> -->
 <!-- 			<a href="#" class=""> -->
 <!--                 <span>我的购物车</span> -->
@@ -77,20 +70,20 @@
 			<div class="mallSearch-input">
 		<!--             <input type="hidden" name="searchType" value="" id="searchType"> -->
 		            <input class="inputSearch" type="text" name="title" autocomplete="off" value="" placeholder="快速查询">
-		            <button class="btnSearch" type="button" onclick="checkSearch()"></button>
+		            <button class="searchBtn" type="button" onclick="checkSearch()"></button>
 		   </div>
    </div>
- </div>
+<!--  </div> -->
 	<div class="container blank-container" style="font-size: large;border-bottom: 2px solid #c33; "> 
-	<nav class="navbar navbar-default" role="navigation"> 
+	<nav class="navbar navbar-default" role="navigation" style=" background-color: white;"> 
 	    <div class="container-fluid"> 
 	    <div class="navbar-header"> 
-	        <a class="navbar-brand" href="#">Food112233</a> 
+	        <a class="navbar-brand" href="#">7号便利店</a> 
 	    </div> 
 	    <div> 
 	        <ul class="nav navbar-nav navbar-right"> 
-	            	<li class=""><a href="${contextPath}/main/list.do">首页 </a></li> 
-	<%--              	<li class="active"><a href="${contextPath}/main/list.do">首页 </a></li>  --%>
+	            	<li class=""><a href="${contextPath}/main/list">首页 </a></li> 
+	<%--              	<li class="active"><a href="${contextPath}/main/list">首页 </a></li>  --%>
 	                <li class="dropdown"> 
 	                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
 	                    新品上市 <b class="caret"></b> 
@@ -133,9 +126,27 @@
 		<sitemesh:write property='body'></sitemesh:write> 
 		 <!--底部  -->         
 			<div id="footerArea" align="center">
-				<div class="horizontal-line"></div>
-				<p> Copyright © 2014 - 2016 store.com  版权所有 浙ICP证100121号 浙公网安备112233445566号 </p>
-				<p> 112233store</p>
+			<br/>
+			<div class="horizontal-line"></div>
+			<div class="slogen container">
+			<ul>
+				<li >
+				      <img alt="" src="${contextPath}/resources/img/slogen/1.jpg"  height="50">
+				</li>
+				<li>
+				      <img alt="" src="${contextPath}/resources/img/slogen/2.jpg"  height="50">
+				</li>
+				<li>
+				      <img alt="" src="${contextPath}/resources/img/slogen/3.jpg"  height="50">
+				</li>
+				<li>
+				      <img alt="" src="${contextPath}/resources/img/slogen/4.jpg"  height="50">
+				</li>
+			</ul>
+			</div>
+				<div class="horizontal-line " style="margin-bottom: 31px;"></div>
+				<p> Copyright © 2017 - 2018  store.com  版权所有 </p>
+				<p> store</p>
 		</div>
 <!-- </body> -->
 <!-- </html> -->

@@ -12,21 +12,25 @@
 		<div class="container-position">
 				<div class="">
 					<h4 class="my-list-header">轮播图片</h4>
+<!-- 					首页的轮播图片大概是1200*474，不然样子会变。 -->
 <!-- 								  <label for="product_ico"><span class="thick label-name">轮播图片</span></label> -->
-								  <div class="my-no-br-right" >
-								  	<input id="pictureIds"  value="${pictureIds}"  hidden/>
+					  <div class="my-no-br-right" >
+					  	<input id="pictureIds"  value="${pictureIds}"  hidden/>
 <!-- 								  用来存放item   -->
-				</div>
-				<ul class="list-inline">
-						  <li><div id="filePicker">选择图片</div>
-						  		  <div id="thelist" class="uploader-list " >
-<!-- 								  		  图片的位置 -->
-						  		  </div>  
-						   </li>
-						   <li>								  		  
-						   		<button type="button" id="startUploadBtn"  class="btn btn-primary">开始上传 </button>
-						   </li>
-				</ul>
+						</div>
+						<ul class="list-inline">
+								  <li><div id="filePicker">选择图片</div>
+								  		  <div id="thelist" class="uploader-list " >
+		<!-- 								  		  图片的位置 -->
+								  		  </div>  
+								   </li>
+<!-- 								   <li>								  		   -->
+<!-- 								   		<button type="button" id="startUploadBtn"  class="btn btn-primary">开始上传 </button> -->
+<!-- 								   </li> -->
+						</ul>
+<!-- 						<div class="my-no-br-right" > -->
+					  			<button type="button" id="startUploadBtn"  class="btn btn-primary">开始上传 </button>
+<!-- 						</div> -->
 			</div> 
 </div>
 </div>
